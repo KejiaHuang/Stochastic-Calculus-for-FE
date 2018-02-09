@@ -1,0 +1,294 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\begin{document}
+
+
+\title {Homework 3}
+\date {October 29, 2015}
+\author{Kejia Huang}
+\maketitle
+\paragraph{Exercise 4.1}
+\paragraph{}{WTS $\mathbb{E}[I(t)|\mathbb{F}(s)]=I(s)$ ,set $s<t, \quad s\in [t_l,t_{l+1})\quad t \in [t_k, t_{k+1})$}
+\begin{align*}
+  I(t) & = \sum_{j=0}^{l-1}\Delta(t_j)(M(t_{j+1})-M(t_(j)))+\Delta(t_l)(M(t_{l+1} -M(t_l)) \\
+  & +\sum_{j=l+1}^{k-1}\Delta(t_j)(M(t_{j+1})-M(t_(j)))+\Delta(t_k)(M(t_{t} -M(t_k))
+\end{align*}
+\begin{align*}
+  \mathbb{E}[I(t)|\mathbb{F}(s)] & = \mathbb{E}[\sum_{j=0}^{l-1}\Delta(t_j)(M(t_{j+1})-M(t_{j}))|\mathbb{F}(s)]+\mathbb{E}[\Delta(t_l)(M(t_{l+1}) -M(t_l))|\mathbb{F}(s)]\\
+   & + \mathbb{E}[\sum_{j=l+1}^{k-1}\Delta(t_j)(M(t_{j+1})-M(t_{j}))|\mathbb{F}(s)]+\mathbb{E}[\Delta(t_k)(M(t_{t}) -M(t_k))|\mathbb{F}(s)]
+\end{align*}
+\paragraph{}{Using"Taking out what is known"}
+\begin{displaymath}
+  \mathbb{E}[\sum_{j=0}^{l-1}\Delta(t_j)(M(t_{j+1})-M(t_{j}))|\mathbb{F}(s)]=\sum_{j=0}^{l-1}\Delta(t_j)(M(t_{j+1})-M(t_{j}))
+\end{displaymath}
+\paragraph{}{Because W(t) is martingale, so for $t_{l+1} > s$ $\mathbb{E}[M(t_{l+1}|\mathbb{F}(s) ]=M(t_{s})$}
+\paragraph{}{Using "Taking out what is known" and "Linearity of conditional expectations"}
+\begin{align*}
+  \mathbb{E}[\Delta(t_l)(M(t_{l+1} -M(t_l))|\mathbb{F}(s)] & =\Delta(t_l)\mathbb{E}[M(t_{l+1}) -M(t_l)|\mathbb{F}(s)] \\
+   & =\Delta(t_l)\mathbb{E}[M(t_{l+1})|\mathbb{F}(s)]-\Delta(t_l)\mathbb{E}[M(t_l)|\mathbb{F}(s)]\\
+   & =\Delta(t_l)(M(t_{s})-M(t_l))
+\end{align*}
+\paragraph{}{For the summands in the third we use "Independence", "Iterated Conditioning" and "Martingale"}
+\begin{align*}
+  & \quad\mathbb{E}[\Delta(t_j)(M(t_{j+1})-M(t_{j}))|\mathbb{F}(s)]\\
+  &=\mathbb{E}[\Delta(t_j)]*\mathbb{E}[(M(t_{j+1})-M(t_{j}))|\mathbb{F}(s)]]\\
+   & =\mathbb{E}[\Delta(t_j)]*\mathbb{E}[\mathbb{E}[(M(t_{j+1})-M(t_{j}))|\mathbb{F}(j)
+  |\mathbb{F}(s)] \\
+   & =\mathbb{E}[\Delta(t_j)]\mathbb{E}[M(t_j)-M(t_j)|\mathbb{F}(s)]\\
+   &=0
+\end{align*}
+\paragraph{}{Using "Independence" and "martingale"}
+\begin{align*}
+  \mathbb{E}[\Delta(t_k)(M(t_{t}) -M(t_k))|\mathbb{F}(s)] & =\mathbb{E}[\Delta(t_k)]*\mathbb{E}[(M(t_{k}) -M(t_k))\mathbb{F}(s)]=0
+\end{align*}
+\paragraph{}{So \begin{displaymath}
+                  \mathbb{E}[I(t)|\mathbb{F}(s)]=\sum_{j=0}^{l-1}\Delta(t_j)(M(t_{j+1})-M(t_{j}))+\Delta(t_l)(M(t_{s})-M(t_l))=I(s)
+                \end{displaymath}}
+\paragraph{Exercise 4.2}{}
+\paragraph{i}{$0\le s < t \le T$ set $s\in [t_l,t_{l+1})$, $t\in [t_k,t_{k+1})$}
+\begin{align*}
+  I(t) & = \sum_{j=0}^{l-1}\Delta(t_j)(W(t_{j+1})-W(t_(j)))+\Delta(t_l)(W(t_{l+1} -W(t_l)) \\
+  & +\sum_{j=l+1}^{k-1}\Delta(t_j)(W(t_{j+1})-W(t_(j)))+\Delta(t_k)(W(t_{t} -W(t_k))
+\end{align*}
+\begin{displaymath}
+  I(s)  = \sum_{j=0}^{l-1}\Delta(t_j)(W(t_{j+1})-W(t_(j)))+\Delta(t_l)(W(t_{s}) -W(t_l))
+\end{displaymath}
+\begin{displaymath}
+  I(t)-I(s)=\Delta(t_l)(W(t_{l+1}) -W(s))+\sum_{j=l+1}^{k-1}\Delta(t_j)(W(t_{j+1})-W(t_{j}))+\Delta(t_k)(W(t_{t}) -W(t_k))
+\end{displaymath}
+\paragraph{}{$\Delta(t)$ is nonrandom simple process, so it is independence with $\mathbb{F}(s)$}
+\paragraph{}{Because W(t) is a Brownian Motion, for any $s\le i < j$, we have $W(t_j)-W(t_i)$ is independence with  $\mathbb{F}(s)$ }
+\paragraph{}{So $(W(t_{l+1}) -W(s))\quad (W(t_{j+1})-W(t_{j}))\quad (W(t_{t}) -W(t_k))$ are independence with $\mathbb{F}(s)$  }
+\paragraph{}{So I(t)-I(s) is independence with $\mathbb{F}(s)$ }
+\paragraph{ii}
+\begin{displaymath}
+  \mathbb{E}[I(t)-I(s)]=\sum_{j=s}^{k-1}\Delta(t_j)\mathbb{E}[W(t_{j+1})-W(t_{j})]=0
+\end{displaymath}
+\begin{align*}
+  Var[I(t)-I(s)] & =Var[\sum_{j=s}^{k-1}\Delta(t_j)(W(t_{j+1})-W(t_{j}))]\\
+  &=\sum_{j=s}^{k-1}(\Delta(t_j))^2Var[W(t_{j+1})-W(t_{j})]\\
+   & =\sum_{j=s}^{k-1}(\Delta(t_j))^2(t_{j+1}-t_{j})\\
+   &=\int_{t_s}^{t_{k-1}}(\Delta(u))^2du
+\end{align*}
+\paragraph{iii}
+\begin{align*}
+  \mathbb{E}[I(t)|\mathbb{F}(s)] &= \mathbb{E}[I(t)-I(s)+I(s)|\mathbb{F}(s)] \\
+   & = \mathbb{E}[I(t)-I(s)|\mathbb{F}(s)]+\mathbb{E}[I(s)|\mathbb{F}(s)]\quad("Linearity \quad of\quad conditional \quad expectations")\\
+   & =\mathbb{E}[I(t)-I(s)|\mathbb{F}(s)]+I(s)\quad("Taking\quad out\quad what \quad is \quad known")\\
+   & = \mathbb{E}[I(t)-I(s)]+I(s)\quad("Independence")\\
+   & = 0+I(s)
+\end{align*}
+\paragraph{}{So I(t) is a martingale}
+\paragraph{iv}
+\begin{displaymath}
+  X(t)=I^2(t)-\int_{0}^{t}\Delta^2(u)du
+\end{displaymath}
+\begin{align*}
+  \mathbb{E}[X(t)|\mathbb{F}(s)] & =\mathbb{E}[X(t)-X(s)+X(s)|\mathbb{F}(s)] \\
+   & = \mathbb{E}[X(t)-X(s)|\mathbb{F}(s)]+\mathbb{E}[X(s)|\mathbb{F}(s)] \quad "Linearity\quad of\quad conditional \quad expectation"\\
+   & =\mathbb{E}[X(t)-X(s)|\mathbb{F}(s)]+X(s)\quad "Taking\quad out\quad what\quad is\quad known" \\
+   & =\mathbb{E}[I^2(t)-I^2(s)-\int_{s}^{t}\Delta^2(u)du|\mathbb{F}(s)]+X(s) \\
+   &  =\mathbb{E}[I^2(t)-I^2(s)|\mathbb{F}(s)]+X(s)-\int_{s}^{t}\Delta^2(u)du  \quad "Taking\quad out\quad what\quad is\quad known" \\
+   & =\mathbb{E}[(I(t)-I(s))^2-2I^2(s)+2I(t)I(s)|\mathbb{F}(s)]+X(s)-\int_{s}^{t}\Delta^2(u)du \\
+   &=\mathbb{E}[(I(t)-I(s))^2|\mathbb{F}(s)]-2\mathbb{E}[I(s)(-I(t)+I(s))|\mathbb{F}(s)]+X(s)-\int_{s}^{t}\Delta^2(u)du\\
+   &=\int_{s}^{t}\Delta^2(u)du-2I(s)\mathbb{E}[(-I(t)+I(s))|\mathbb{F}(s)]+X(s)-\int_{s}^{t}\Delta^2(u)du\\
+   &=\int_{s}^{t}\Delta^2(u)du+0+X(s)-\int_{s}^{t}\Delta^2(u)du\\
+   &=X(s)
+\end{align*}
+\paragraph{}{So X(t) is a martingale}
+\paragraph{Exercise 4.3}
+\begin{align*}
+  I(t) & =\Delta(t_0)(W(t_1)-W(t_0))+\Delta(t_1)(W(t_2)-W(t_1)) \\
+  I(s) & =\Delta(t_0)(W(t_1)-W(t_0)) \\
+  I(t)-I(s)&= \Delta(t_1)(W(t_2)-W(t_1))=W(s)(W(t)-W(s)) \\
+\end{align*}
+\paragraph{i False}
+\paragraph{ $I(t)-I(s)= \Delta(t_1)(W(t_2)-W(t_1))=W(s)(W(t)-W(s))$, W(s)is $\mathbb{F}(s)$ measurable}
+\paragraph{ii False}
+\begin{align*}
+  \mathbb{E}[(I(t)-I(s))^4] & = \mathbb{E}[W^4(s)]\mathbb{E}[(W(t)-W(s))^4]=3s^2*3(t-s)^2=9s^2(t-s)^2\\
+  3(Var[I(t)-I(s)])^2 & 3(\mathbb{E}[(I(t)-I(s))^2])^2=3(\mathbb{E}[W^2(s)(W(t)-W(s))^2])=3s^2(t-s)^2 \\
+\end{align*}
+\paragraph{iii True}
+\begin{align*}
+  \mathbb{E}[I(t)|\mathbb{F}(s)] & \mathbb{E}[I(t)-I(s)+I(s)|\mathbb{F}(s)] \\
+   & =\mathbb{E}[I(t)-I(s)|\mathbb{F}(s)]+\mathbb{E}[I(s)|\mathbb{F}(s)] \quad "Linearity\quad of\quad conditional \quad expectation"\\
+   & =W(s)\mathbb{E}[(W(t)-W(s))|\mathbb{F}(s)]+I(s)\quad "Taking\quad out\quad what\quad is\quad known"\\
+   &= I(s)
+\end{align*}
+\paragraph{}{So I(t) is a martingale}
+\paragraph{iv True}
+\begin{align*}
+   &\quad \mathbb{E}[I^2(t)-\int_{0}^{t}\Delta^2(u)du|\mathbb{F}(s)] \\
+   & =\mathbb{E}[I^2(t)-\int_{0}^{t}\Delta^2(u)du-I^2(s)+\int_{0}^{s}\Delta^2(u)du+I^2(s)-\int_{0}^{s}\Delta^2(u)du|\mathbb{F}(s)] \\
+   & = \mathbb{E}[I^2(s)-\int_{0}^{s}\Delta^2(u)du|\mathbb{F}(s)]+\mathbb{E}[I^2(t)-I^2(s)|\mathbb{F}(s)] -\int_{s}^{t}\Delta^2(u)du \quad "Linearity"\\
+  & = I^2(s)-\int_{0}^{s}\Delta^2(u)du+\mathbb{E}[I^2(t)-I^2(s)|\mathbb{F}(s)] -\int_{s}^{t}\Delta^2(u)du\quad"Taking\quad out\quad what\quad is\quad known"\\
+   & = I^2(s)-\int_{0}^{s}\Delta^2(u)du+\mathbb{E}[(I(t)-I(s))^2-2I(s)(I(t)-I(s))|\mathbb{F}(s)] -\int_{s}^{t}\Delta^2(u)du\\
+  & =I^2(s)-\int_{0}^{s}\Delta^2(u)du+\mathbb{E}[(I(t)-I(s))^2|\mathbb{F}(s)] -2I(s)\mathbb{E}[(I(t)-I(s)))|\mathbb{F}(s)]-\int_{s}^{t}\Delta^2(u)du\\
+  &=I^2(s)-\int_{0}^{s}\Delta^2(u)du-\int_{s}^{t}\Delta^2(u)du+\int_{s}^{t}\Delta^2(u)du+0\\
+  &=I^2(s)-\int_{0}^{s}\Delta^2(u)du
+\end{align*}
+\paragraph{}{So $I^2(t)-\int_{0}^{t}\Delta^2(u)du$ is a martingale }
+\paragraph{Exercise 4.5}
+\paragraph{i}{set f(t,x)=lnx, so }
+\begin{displaymath}
+   \frac{\partial f}{\partial t}=0,\frac{\partial f}{\partial x}=\frac{1}{x},\frac{\partial^2 f}{\partial x^2}=-\frac{1}{x^2}
+\end{displaymath}
+\begin{displaymath}
+  (dS(t))^2=\sigma^2(t)S^2(t)
+\end{displaymath}
+\begin{align*}
+  dlnS(t) & =df(t,S(t)) \\
+   & =\frac{1}{S(t)}dS(t)-\frac{1}{2}\frac{1}{S^{2}(t)}(dS(t))^2 \\
+   & =\alpha(t)dt+\sigma(t)dW(t)-\frac{1}{2}\sigma^2(t)dt \\
+   & =(\alpha(t)-\frac{1}{2}\sigma^2(t))dt+\sigma(t)d(W(t)) \\
+\end{align*}
+\paragraph{ii}
+\begin{displaymath}
+  lnS(t)=lnS(0)+\int_{0}^{t}\alpha(s)-\frac{1}{2}\sigma^2(s)ds+\int_{0}^{t}\sigma(s)dW(s)
+\end{displaymath}
+\begin{displaymath}
+  S(t)=S(0)exp\{\int_{0}^{t}\alpha(s)-\frac{1}{2}\sigma^2(s)ds+\int_{0}^{t}\sigma(s)dW(s)
+  \}
+\end{displaymath}
+\paragraph{Exercise 4.6}
+\paragraph{}{Let $f(t,x)=S(0)e^x$}
+\begin{displaymath}
+   \frac{\partial f}{\partial t}=0,\frac{\partial f}{\partial x}=f(x),\frac{\partial^2 f}{\partial x^2}=f(x)
+\end{displaymath}
+\paragraph{define $X(t)=(\alpha-\frac{1}{2}\sigma^2)t+\sigma W(t)$}
+\paragraph{}{So $dX(t)=(\alpha-\frac{1}{2}\sigma^2)dt+\sigma dW(t)$}
+\paragraph{}{$(dX(t))^2=\sigma^2dt$}
+\begin{align*}
+  d(S(t)) & =df(t,X(t)) \\
+   &= S(t)dX(t)+\frac{1}{2}S(t)(dX(t))^2 \\
+   &= S(t)dX(t)+\frac{1}{2}S(t)\sigma^2dt \\
+   & =S(t)\alpha dt-\frac{1}{2}\sigma^2S(t)dt+\sigma S(t)dW(t)+\frac{1}{2}S(t)\sigma^2dt \\
+   & =S(t)\alpha dt+\sigma S(t)dW(t)
+\end{align*}
+\paragraph{Let $f(t,x)=x^p$}
+\begin{displaymath}
+   \frac{\partial f}{\partial t}=0,\frac{\partial f}{\partial x}=px^{p-1},\frac{\partial^2 f}{\partial x^2}=p(p-1)x^{p-2}
+\end{displaymath}
+\begin{displaymath}
+  (dS(t))^2=\sigma^2S(t)dt
+\end{displaymath}
+\begin{align*}
+  d(S^p(t)) & = d(t,S(t))\\
+   & =pS^{p-1}(t)dS(t)+\frac{1}{2}p(p-1)S^{p-2}(t)(dS(t))^2 \\
+   & =pS^{p-1}(t)dS(t)+\frac{1}{2}p(p-1)S^{p-2}(t)\sigma^2S(t)dt \\
+    & = pS^{p-1}(t)(S(t)\alpha dt+\sigma S(t)dW(t))+\frac{1}{2}p(p-1)S^{p-2}(t)\sigma^2S(t)dt \\
+   & =(\sigma+\frac{1}{2}(p-1))pS^{p}(t)dt+\sigma pS^{p}(t)dW(t)
+\end{align*}
+\paragraph{Exercise 4.7 }
+\paragraph{i}
+\paragraph{}{Let $f(t,x)=x^4$}
+\begin{displaymath}
+ \frac{\partial f}{\partial t}=0,\frac{\partial f}{\partial x}=4x^3,\frac{\partial^2 f}{\partial x^2}=12x^2
+\end{displaymath}
+\begin{align*}
+  d(W^4(t)) & = d(t,W(t))\\
+   & =4W^3(t)dW(t)+6W^2(t)dt \\
+\end{align*}
+\paragraph{}{Integration of with both sides}
+\begin{displaymath}
+  W^4(T)=W^4(0)+4\int_{0}^{T}W^3(t)dW(t)+6\int_{0}^{T}W^2(t)dt
+\end{displaymath}
+\begin{displaymath}
+  W^4(T)=4\int_{0}^{T}W^3(t)dW(t)+6\int_{0}^{T}W^2(t)dt
+\end{displaymath}
+\paragraph{ii}
+\begin{displaymath}
+  \mathbb{E} [W^4(T)]=\mathbb{E}[4\int_{0}^{T}W^3(t)dW(t)]+\mathbb{E}[6\int_{0}^{T}W^2(t)dt]
+\end{displaymath}
+\paragraph{}{The expectation of an Ito integral is zero, so $\mathbb{E}[4\int_{0}^{T}W^3(t)dW(t)]=0$}
+\begin{displaymath}
+   \mathbb{E} [W^4(T)]=\mathbb{E}[6\int_{0}^{T}W^2(t)dt]=6\int_{0}^{T}\mathbb{E}[W^2(t)dt]=6\int_{0}^{T}tdt=3T^2
+\end{displaymath}
+\paragraph{iii}
+\paragraph{}{Let $f(t,x)=x^6$}
+\begin{displaymath}
+ \frac{\partial f}{\partial t}=0,\frac{\partial f}{\partial x}=6x^5,\frac{\partial^2 f}{\partial x^2}=30x^4
+\end{displaymath}
+\begin{align*}
+  d(W^4(t)) & = d(t,W(t))\\
+   & =6W^5(t)dW(t)+30W^4(t)dt \\
+\end{align*}
+\paragraph{}{Integration of with both sides}
+\begin{displaymath}
+  W^6(T)=W^6(0)+6\int_{0}^{T}W^5(t)dW(t)+15\int_{0}^{T}W^4(t)dt
+\end{displaymath}
+\begin{displaymath}
+  W^6(T)=6\int_{0}^{T}W^5(t)dW(t)+15\int_{0}^{T}W^4(t)dt
+\end{displaymath}
+\begin{displaymath}
+  \mathbb{E} [W^6(T])= \mathbb{E}[6\int_{0}^{T}W^5(t)dW(t)]+ \mathbb{E}[15\int_{0}^{T}W^4(t)dt]
+\end{displaymath}
+\paragraph{}{The expectation of an Ito integral is zero, so $\mathbb{E}[6\int_{0}^{T}W^5(t)dW(t)]=0$}
+\begin{displaymath}
+   \mathbb{E} [W^4(T)]=\mathbb{E}[15\int_{0}^{T}W^4(t)dt]=15\int_{0}^{T}\mathbb{E}[W^4(t)dt]=15\int_{0}^{T}3t^2dt=15T^3
+\end{displaymath}
+\paragraph{Exercise 4.8 }
+\paragraph{i}
+\paragraph{}{let $f(t,x)=e^{\beta t}x$}
+\begin{displaymath}
+ \frac{\partial f}{\partial t}=\beta f(t,x),\frac{\partial f}{\partial x}=e^{\beta t},\frac{\partial^2 f}{\partial x^2}=0
+\end{displaymath}
+\begin{displaymath}
+  (dR(t))^2=\sigma^2 dt
+\end{displaymath}
+\begin{align*}
+  d(e^{\beta t}R(t)) & =df(t,R(t)) \\
+   &=\beta e^{\beta t} R(t)dt+e^{\beta t}d(R(t)) \\
+  & =\beta e^{\beta t}R(t)dt+e^{\beta t}((\alpha-\beta R(t))dt+\sigma dW(t)) \\
+   & =\alpha e{\beta t}R(t)dt+\sigma e^{\beta t}d W(t)
+\end{align*}
+\paragraph{ii}
+\newcommand\rsx[1]{\left.{#1}\vphantom{\Big|}\right|}
+\begin{displaymath}
+  e^{\beta t}R(t)  =R(0)+\int_{0}^{t}\alpha e^{\beta s}ds+\int_{0}^{t}\sigma e^{\beta t}dW(s)
+  =R(0)+\rsx{\frac{\alpha}{\beta}e^{\beta t}}_{0}^{t}+\sigma\int_{0}^{t}e^{\beta u}dW(u)
+\end{displaymath}
+
+\begin{displaymath}
+R(t)=e^{-\beta t}R(0)+\frac{\alpha}{\beta}(1-e^{\beta t})+e^{-\beta t}\sigma\int_{0}^{t}e^{\beta u}dW(u)
+\end{displaymath}
+\paragraph{Addition a}
+\begin{displaymath}
+  X_t=e^{tW_t}
+\end{displaymath}
+\paragraph{}{let $f(t,x)=e^{tx}$}
+\begin{displaymath}
+ \frac{\partial f}{\partial t}=xf(t,x),\frac{\partial f}{\partial x}=tf(t,x),\frac{\partial^2 f}{\partial x^2}=t^2f(t,x)
+\end{displaymath}
+\begin{align*}
+  d(X_t) & =df(t,W(t)) \\
+   &=W(t)f(t,x)dt+tf(t,x)dW(t)+\frac{1}{2}t^2f(t,x)d^2(W(t)) \\
+   &=W(t)f(t,x)dt+tf(t,x)dW(t)+\frac{1}{2}t^2f(t,x)dt\\
+   &=(W(t)+\frac{1}{2}t^2)e^{tW(t)}dt+te^{tW(t)}dW(t)
+\end{align*}
+\paragraph{b}
+\paragraph{}{let $F(t,x)=e^{\gamma t}f(W(t))$}
+\begin{displaymath}
+ \frac{\partial F}{\partial t}=\gamma F(t,x),\frac{\partial F}{\partial x}=e^{\gamma t}f'(W(t)),\frac{\partial^2 F}{\partial x^2}=e^{\gamma t}\lambda f(W(t))=\lambda F(t,x)
+\end{displaymath}
+\begin{align*}
+  d(X_t) & =df(t,W(t)) \\
+   &= \gamma F(t,x)dt+e^{\gamma t}f'(W(t))dW(t)+\frac{1}{2}\lambda F(t,x)d^2W(t)\\
+   &= \gamma F(t,x)dt+e^{\gamma t}f'(W(t))dW(t)+\frac{1}{2}\lambda F(t,x)d(t)\\
+   &=e^{\gamma t}f(w(t))(\gamma +\frac{1}{2}\lambda)dt+e^{\gamma t}f'(W(t))dW(t)\end{align*}
+\paragraph{}{ Integration of the both sides}
+\begin{displaymath}
+  X(t)=X(0)+(\gamma +\frac{1}{2}\lambda)\int_{0}^{t}e^{\gamma z}f(W(z))dz+\int_{0}^{t}e^{\gamma z}f'(W(z))dW(z)
+\end{displaymath}
+\paragraph{}{The expectation of an Ito integral is zero, so $\mathbb{E}[\int_{0}^{t}e^{\gamma z}f'(W(z))dW(z)]=0$}
+\begin{align*}
+  \mathbb{E}[X(t)] & =1+(\gamma +\frac{1}{2}\lambda)\mathbb{E}[\int_{0}^{t}e^{\gamma z}f(W(z))dz] \\
+  \mathbb{E}[e^{\gamma t}f(W(t))]&=1+(\gamma +\frac{1}{2}\lambda)\mathbb{E}[\int_{0}^{t}e^{\gamma z}f(W(z))dz] \\
+\end{align*}
+\paragraph{}{Set $\gamma = - \frac{1}{2}\lambda$}
+\begin{displaymath}
+  \mathbb{E}[f(W(t))]=e^\frac{1}{2}\lambda t
+\end{displaymath}
+\end{document} 

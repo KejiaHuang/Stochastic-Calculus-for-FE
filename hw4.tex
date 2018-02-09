@@ -1,0 +1,231 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\begin{document}
+
+
+\title {Homework 4}
+\date {November 12, 2015}
+\author{Kejia Huang}
+\maketitle
+
+\paragraph{Exercise 4.10}
+\paragraph{i}
+\begin{align}\label{1}
+  dX(t) & =\Delta(t)+r(X(t)-\Delta(t)S(t))dt
+\end{align}
+\begin{align}\label{2}
+  X(t) & =\Delta(t)S(t)+\Gamma(t)M(t)
+\end{align}
+\paragraph{}{ Using Ito product rule}
+\begin{align*}
+  dX(t) & =d(\Delta(t)S(t))+d(\Gamma(t)M(t))
+  \end{align*}
+   \begin{align} \label{3}
+    dX(t)& =S(t)d\Delta(t)+\Delta(t)dS(t)+d\Delta(t)dS(t)+ \Gamma(t)dM(t)+M(t)d\Gamma(t)+d\Gamma(t)dM(t)
+\end{align}
+\paragraph{}{ (2) $\to$ (1)}
+\begin{align*}
+  dX(t)& =\Delta(t)dS(t)+r\Gamma(t)M(t)dt
+  \end{align*}
+ \begin{align} \label{4}
+  dX(t)&=\Delta(t)dS(t)+\Gamma(t)dM(t)
+\end{align}
+\paragraph{}{(3)-(4)}
+\begin{displaymath}
+  S(t)d\Delta(t)+d\Delta(t)dS(t)+M(t)d\Gamma(t)+d\Gamma(t)dM(t)=0
+\end{displaymath}
+\paragraph{ii}
+\paragraph{}{ Using Ito product rule}
+\begin{align*}
+    N(t) & =\Gamma(t)M(t) \\
+  dN(t)  &=d\Gamma(t)M(t)+\Gamma(t)dM(t)+d\Gamma(t)dM(t)\\
+  dN(t)&=c_t(t,S(t))dt+c_x(t,S(t))dS(t)+\frac{1}{2}c_{xx}(t,S(t))dS(t)dS(t)\\
+  &-\Delta(t)dS(t)-S(t)d\Delta(t)-d\Delta(t)dS(t)
+\end{align*}
+\paragraph{}{put last two equations together and use continuous-time self financing condition}
+\begin{align*}
+  \quad \Gamma(t)dM(t)+d\Gamma(t)M(t)+d\Gamma(t)dM(t)+S(t)d\Delta(t)+d\Delta(t)dS(t) \\
+  = c_t(t,S(t))dt+c_x(t,S(t))dS(t)+\frac{1}{2}c_{xx}(t,S(t))dS(t)dS(t)-\Delta(t)dS(t)\\
+  \Gamma(t)dM(t)  =c_t(t,S(t))dt+c_x(t,S(t))dS(t)+\frac{1}{2}c_{xx}(t,S(t))dS(t)dS(t)-\Delta(t)dS(t)\\
+  \frac{N(t)}{M(t)}rM(t)dt=[c_x(t,S(t))-\Delta(t)]dS(t)+[c_t(t,S(t))+\frac{1}{2}\sigma^2S^2(t)c_xx(t,S(t))]dt
+\end{align*}
+\paragraph{}{use the delta-hedging formula $\Delta(t)=c_x(t,S(t))$ to cancel out the dS(t)}
+\begin{align*}
+  N(t)dt & =[c_t(t,S(t))+\frac{1}{2}\sigma^2S^2(t)c_xx(t,S(t))]dt\\
+  dN(t) & =[c_t(t,S(t))+\frac{1}{2}\sigma^2S^2(t)c_xx(t,S(t))]dt
+\end{align*}
+\paragraph{Exercise 4.12}
+\paragraph{i}
+\begin{align*}
+  &p(t,x)=c(t,x)-f(t,x) \\
+  &\Delta: p_x(t,x)=c_x(t,x)-f_x(t,x)=N(d_+(T-t,x))-1 \\
+ & \Gamma: p_{xx}=c_{xx}(t,x)=N'(d_+(T-t,x)\frac{\partial}{\partial x}d_+(T-t,x)) \\
+  &\Theta: p_t(t,x)=c_t(t,x)-f_t(t,x) \\
+ & =-rke^{-r(T-t)}N(d_-(T-t,x))-\frac{\sigma x}{2\sqrt{T-t}}N'(d_+(T-t,x))+rke^{-r(T-t)}\\
+  &=rke^{-r(T-t)}(1-N(d_-(T-t,x)))-\frac{\sigma x}{2\sqrt{T-t}}N'(d_+(T-t,x))+rke^{-r(T-t)}\\
+  &=rke^{-r(T-t)}(N(-d_-(T-t,x)))-\frac{\sigma x}{2\sqrt{T-t}}N'(d_+(T-t,x))+rke^{-r(T-t)}
+\end{align*}
+\paragraph{ii}
+\paragraph{}{For an agent hedging a short position in the put for hold $p_x(t,x)$ shares of stock.}
+\paragraph{}{$p_x(t,x)=c_x(t,x)-f_x(t,x)=N(d_+(T-t,x))-1$, so $p_x < 0$, so he will short the underlying shock.}
+\paragraph{}{He will invest $p(t,St)-p_x(t,S(t))$ in the money account}
+\begin{align*}
+  &\quad p(t,St)-S(t)p_x(t,S(t)) \\
+  &=c(t,S(t))-f(t,S(t))-S(t)p_x(t,S(t))\\
+  &=S(t)N(d_+(T-t,x))-Ke^{-r(T-t)}N(d_-(T-t,x))-S(t)\\
+  &+Ke^{-r(T-t)}-S(t)(N(d_+(T-t,x))-1)\\
+  &=Ke^{-r(T-t)}(1-N(d_-(T-t,x)))\\
+  &=Ke^{-r(T-t)}N(-d_-(T-t,x))>0
+\end{align*}
+\paragraph{iii}
+\begin{align*}
+&f(t,S(t))=S(t)-Ke^{-r(T-t)}\\
+  &f_t= -Kre^{-r(T-t)}\quad f_x=1 \quad f_{xx}=0 \\
+  &\quad f_t+rS(t)f_x(t,x)+\frac{1}{2}\sigma^2x^2c_{xx}(t,x)\\
+ & =f_t+rS(t)=-Kre^{-r(T-t)}+rS(t)=rf(t,S(t))
+\end{align*}
+\paragraph{}{so f(t,S(t)) satisfy Black-Scholes-Merton partial differential equation }
+\paragraph{}{ Because c(t,S(t)) and f(t,S(t)) satisfy Black-Scholes-Merton partial differential equation, so $p(t,S(t))=c(t,S(t))-f(t,S(t))$ satisfy BSM PDE too}
+\paragraph{Exercise 4.13}
+\begin{align*}
+   & dB_1(t)dB_2(t)=\rho(t)dt \\
+  &dW_1(t)= dB_1(t)\\
+   & dW_2(t)=-\frac{\rho(t)}{\sqrt{1-\rho^2(t)}}dB_1(t)+\frac{1}{\sqrt{1-\rho^2(t)}}dB_2(t)
+\end{align*}
+\paragraph{}{To show $W_1(t)$ and $W_2(t)$ are independent Brownian motions, we have to use "Levy, two dimensions".WTS $W_1(t),W_2(t)$ satisfy all the conditions of "Levy, two dimensions".}
+\paragraph{i) Martingale property}
+\begin{align*}
+  &W_1(t)= B_1(t)
+ \end{align*}
+ \begin{align*}
+   W_2(t)=-\int_{0}^{t}\frac{\rho(u)}{\sqrt{1-\rho^2(u)}}dB_1(u)+\int_{0}^{t}\frac{1}{\sqrt{1-\rho^2(u)}}dB_2(u)
+\end{align*}
+\paragraph{}{Because $B_1(t)$ is a Brownian motion, so $W_1(t)= B_1(t)$ is a Brownian motion too, it has martingale property.Because Ito integral is a martingale, so we have $W_2(t)$ has martingale property.   }
+\paragraph{ii) Starting at zero}
+\begin{align*}
+  &W_1(0)= B_1(0)=0\\
+  & W_2(0)=-\int_{0}^{0}\frac{\rho(u)}{\sqrt{1-\rho^2(u)}}dB_1(u)+\int_{0}^{0}\frac{1}{\sqrt{1-\rho^2(u)}}dB_2(u)=0
+\end{align*}
+\paragraph{}{so we have $W_1(0)=0,W_2(t)=0$ }
+\paragraph{iii) Continuity}
+\paragraph{}{$W_1(t)$ is a Brownian motion, so it has continuous paths}
+\paragraph{}{Ito integral has continuous paths, so $W_2(t)$ has continuous paths}
+\paragraph{iv) Unit quadratic variation}
+\begin{align*}
+  &dW_1(t)dW_1(t)=dB_1(t)dB_1(t)
+\end{align*}
+\paragraph{}{Because $B_1(t)$ is a Brownian motion, so $dB_1(t)dB_1(t)=t$, so $dW_1(t)dW_1(t)$=t}
+\begin{align*}
+  &\quad \quad dW_2(t)dW_2(t) \\ &=(-\frac{\rho(t)}{\sqrt{1-\rho^2(t)}}dB_1(t))^2+(\frac{1}{\sqrt{1-\rho^2(t)}}dB_2(t))^2-2\frac{\rho(t)}{\sqrt{1-\rho^2(t)}}dB_1(t)\frac{1}{\sqrt{1-\rho^2(t)}}dB_2(t) \\
+  &=\frac{\rho^2(t)}{1-\rho^2(t)}dt+\frac{1}{1-\rho^2(t)}dt-2\frac{\rho^2(t)}{1-\rho^2(t)}dt\\
+  &=\frac{1-\rho^2(t)}{1-\rho^2(t)}dt\\
+  &=dt
+\end{align*}
+\paragraph{v) Zero cross variation}
+\begin{align*}
+  dW_1(t)dW_2(t)&=dB_1(t)(-\frac{\rho(t)}{\sqrt{1-\rho^2(t)}}dB_1(t)+\frac{1}{\sqrt{1-\rho^2(t)}}dB_2(t))\\
+  &=-\frac{\rho(t)}{\sqrt{1-\rho^2(t)}}dt+\frac{\rho(t)}{\sqrt{1-\rho^2(t)}}dt\\
+  &=0
+\end{align*}
+\paragraph{}{Using "Levy, two dimensions", we have $W_1(t),W_2(t)$ are independent Brownian motions.}
+\paragraph{Exercise 4.14}
+\paragraph{i}
+\begin{align*}
+  Z_j & =f''(W(t_j))[(W(t_j)-W(t_j))^2-(t_{j+1}-t_j)]
+\end{align*}
+\paragraph{}{Because $f''(W(t_j))$, $(W(t_j)-W(t_j))^2$ is $\mathbb{F}(t_{j+1})$-measurable, so $Z_j is $ $\mathbb{F}(t_{j+1})$-measurable too.}
+\begin{align*}
+  \mathbb{E}[Z_j|\mathbb{F}(t_j)] & = \mathbb{E}[f''(W(t_j))[(W(t_j)-W(t_j))^2-(t_{j+1}-t_j)] |\mathbb{F}(t_j)]\\
+   & =f''(W(t_j))\mathbb{E}[[(W(t_j)-W(t_j))^2-(t_{j+1}-t_j)] |\mathbb{F}(t_j)] \\
+    &("Taking\quad out\quad what\quad is\quad known")\\
+   & =f''(W(t_j))\mathbb{E}[(W(t_j)-W(t_j))^2-(t_{j+1}-t_j)]\\
+    &("Independence")\\
+   & =-(t_{j+1}-t_j)f''(W(t_j))+(Var[W(t_j)-W(t_j)]-(\mathbb{E}[W(t_j)-W(t_j)])^2)f''(W(t_j))\\
+   &=-(t_{j+1}-t_j)f''(W(t_j))+(t_{j+1}-t_j+0)f''(W(t_j))\\
+   &=0
+\end{align*}
+\begin{align*}
+ \mathbb{E}[(Z_j)^2|\mathbb{F}(t_j)] & = \mathbb{E}[(f''(W(t_j)))^2[(W(t_j)-W(t_j))^4+(t_{j+1}-t_j)^2-2(W(t_j)-W(t_j))^2(t_{j+1}-t_j)] |\mathbb{F}(t_j)]\\
+ &=(f''(W(t_j)))^2\mathbb{E}[[(W(t_j)-W(t_j))^4+(t_{j+1}-t_j)^2-2(W(t_j)-W(t_j))^2(t_{j+1}-t_j)] |\mathbb{F}(t_j)]\\
+ &("Taking\quad out\quad what\quad is\quad known")\\
+ &=(f''(W(t_j)))^2\mathbb{E}[(W(t_j)-W(t_j))^4+(t_{j+1}-t_j)^2-2(W(t_j)-W(t_j))^2(t_{j+1}-t_j)] \\
+ & ("Independence")\\
+  &=(f''(W(t_j)))^2\mathbb{E}[3(t_{j+1}-t_j)^2+(t_{j+1}-t_j)^2-2((t_{j+1}-t_j)^2] \\
+   & =2(f''(W(t_j)))^2(t_{j+1}-t_j)^2
+\end{align*}
+\paragraph{}{(The fourth moment of a normal random variable with zero mean is three times its variance squared)  }
+\paragraph{}{ii}
+\begin{align*}
+  \mathbb{E}[\sum_{j=0}^{n-1}Z_j] & =\sum_{j=0}^{n-1} \mathbb{E}[Z_j]\\
+   & = \sum_{j=0}^{n-1} \mathbb{E}[\mathbb{E}[Z_j|\mathbb{F}(t_j)]]\\
+ & =n*0 \\
+   & =0
+\end{align*}
+\paragraph{iii}
+\begin{align*}
+  Var[\sum_{j=0}^{n-1}Z_j] &=\mathbb{E}[(\sum_{j=0}^{n-1}Z_j)^2]-(\mathbb{E}[(\sum_{j=0}^{n-1}Z_j)])^2\\
+   &=\mathbb{E}[(\sum_{j=0}^{n-1}Z_j)^2]  \\
+ &= \mathbb{E}[\sum_{j=0}^{n-1}(Z_j)^2+2\sum_{0\le i<j \le n-1}^{}Z_{i}Z_{j}] \\
+ &=\sum_{j=0}^{n-1}\mathbb{E}[(Z_j)^2]+2\sum_{0\le i<j \le n-1}^{}\mathbb{E}[Z_{i}Z_{j}] \\
+ &=\sum_{j=0}^{n-1}\mathbb{E}[\mathbb{E}[(Z_j)^2|\mathbb{F}{t_j}]]+2\sum_{0\le i<j \le n-1}^{}\mathbb{E}[\mathbb{E}[Z_{i}|\mathbb{F}(t_i)]\mathbb{E}[Z_{j}|\mathbb{F}(t_j)]] \\
+    & =\sum_{j=0}^{n-1}\mathbb{E}[ 2(f''(W(t_j)))^2(t_{j+1}-t_j)^2]\\
+    &=\sum_{j=0}^{n-1}\mathbb{E}[ 2(f''(W(t_j)))]^2(t_{j+1}-t_j)^2\\
+    &\le \max_{0\le j \le n-1}|t_{j+1}-t_j|\sum_{j=0}^{n-1}\mathbb{E}[ 2(f''(W(t_j)))]^2(t_{j+1}-t_j)\\
+    &=\lim_{\pi \to 0}2\pi\sum_{j=0}^{n-1}\mathbb{E}[ (f''(W(t_j)))]^2(t_{j+1}-t_j)\\
+    &=0
+\end{align*}
+\paragraph{}{($\sum_{j=0}^{n-1}\mathbb{E}[ (f''(W(t_j)))]^2(t_{j+1}-t_j)< \infty$)}
+\paragraph{Exercise 4.15}
+\paragraph{i}
+\paragraph{}{Use "Levy, one dimension" to prove $B_i$ is a Brownian motion}
+\paragraph{}{Because $(W_1(t),...,W_d(t))$ is a d-dimensional Brownian motion, so $(W_1(0),...,W_d(0))=0$, so $\sigma_{1j}=0$ ,j=1,...,d, so $B_i(0)=0$}
+\paragraph{}{$B_i(t)$ is a sum of Ito integrals, so it has the continuity and the martingale property.}
+\begin{align*}
+  &dB_i(t)  =\frac{1}{\sigma_i(t)}\sum_{j=1}^{d}\sigma_{ij}(t)dW_j(t)\\
+  &dB_i(t)dB_i(t)=\frac{1}{\sigma_{i}^2(t)}\sum_{j=1}^{d}\sigma_{ij}^2(t)d(t)=\frac{\sum_{j=1}^{d}\sigma_{ij}^2(t)}{\sum_{j=1}^{d}\sigma_{ij}^2(t)}dt=dt
+\end{align*}
+\paragraph{}{SO $B_i$ satisfies all condition of "Levy, one dimension", so it is a Brownian motion }
+\paragraph{ii}
+\paragraph{}{For $W_i(t),W_j(t),i\neq j$ ,they are independent, so $dW_i(t)dW_j(t)=0,i\neq j$}
+\begin{align*}
+  dB_i(t)dB_i(t) & =[\sum_{j=1}^{d}\frac{\sigma_{ij}(t)}{\sigma_i(t)}dW_j(t)][\sum_{l=1}^{d}\frac{\sigma_{kl}(t)}{\sigma_k(t)}dW_l(t)]\\
+&=[\sum_{j=1}^{d}\frac{\sigma_{ij}(t)}{\sigma_i(t)}dW_j(t)][\frac{\sigma_{kj}(t)}{\sigma_k(t)}dW_j(t)]\\
+&=\frac{1}{\sigma_i(t)\sigma_k(t)}\sum_{j=1}^{d}\sigma_{ij}\sigma_{kj}dt\\
+&=\rho_{ik}(t)dt
+\end{align*}
+\paragraph{Exercise 4.18}
+\paragraph{i}
+\paragraph{}{Let $\zeta(t,x)=exp\{-\theta x-(r+\frac{1}{2}\theta^2)t\}$. We have}
+\begin{align*}
+  \frac{\partial \zeta}{\partial t}=-(r+\frac{1}{2}\theta^2)\zeta(t,x), \quad \frac{\partial \zeta}{\partial x}=-\theta\zeta(t,x),\quad \frac{\partial^2 \zeta}{\partial x^2}=\theta^2\zeta(t,x)
+\end{align*}
+\begin{align*}
+  d\zeta(t) &=d \zeta(t,W(t))\\
+  & =\frac{\partial \zeta}{\partial t}dt+\frac{\partial \zeta}{\partial x}dW(t)+\frac{1}{2}\frac{\partial^2 \zeta}{\partial x^2}dW^2(t) \\
+&=-(r+\frac{1}{2}\theta^2)\zeta(t)dt-=-\theta\zeta(t)dW(t)+\frac{1}{2}\theta^2\zeta(t)dt\\
+&=-r\zeta(t)dt-\theta\zeta(t)dW(t)
+\end{align*}
+\paragraph{ii}
+\begin{align*}
+  d(\zeta(t)X(t)) & = \zeta(t)dX(t)+X(t)d\zeta(t)+dX(t)d\zeta(t)\\
+   & =rX(t) \zeta(t)dt+\delta(t)(\alpha-r)S(t)\zeta(t)dt+\delta(t)\sigma S(t)\zeta (t)dW(t) \\
+  &\quad -X(t)r\zeta(t)dt-X(t)\theta\zeta(t)dW(t)-\theta\zeta(t)\delta(t)\sigma S(t)dt\\
+  &=\zeta(t)(\delta(t)\sigma S(t)-\theta X(t))dW(t)
+\end{align*}
+\paragraph{}{So we have }
+\begin{align*}
+  \zeta(t)X(t) =\zeta(0)X(0)+\int_{0}^{t}\zeta(u)(\delta(u)\sigma S(u)-\theta X(u))dW(u)
+\end{align*}
+\paragraph{}{So $\zeta(t)X(t)$ is Ito integral, it is a martingale }
+\paragraph{iii}
+\paragraph{}{Let $\theta(t)$ be an adapted portfolio process satisfy X(t)=V(t)}
+\begin{align*}
+  \zeta(0)X(0)=exp\{-\theta W(0)-(r+\frac{1}{2}\theta^2)0\}X(0)=X(0)
+\end{align*}
+\paragraph{}{Because $ \zeta(t)X(t)$ is a martingale, hence it has constant expectation.}
+\begin{align*}
+  &\zeta(0)X(0) =\mathbb{E}[\zeta(t)X(t)]\\
+  &X(0)=\mathbb{E}[\zeta(t)V(t)]
+\end{align*}
+\end{document}

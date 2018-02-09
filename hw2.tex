@@ -1,0 +1,387 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsfonts}
+\begin{document}
+
+
+\title {Homework 2}
+\date {September 21, 2015}
+\author{Kejia Huang}
+\maketitle
+
+\paragraph{Exercise 5.2}
+\paragraph{i}{Because $a+b\ge 2\sqrt{ab}$ for a,b $\in (0,+\infty)$, so we have}
+\begin{displaymath}
+  f(\sigma)=pe^{\sigma}+qe^{\sigma}\ge 2\sqrt{pe^{\sigma}qe^{-\sigma}}=2\sqrt{p(1-p)}\quad for\quad p\quad \in (\frac{1}{2},1)
+\end{displaymath}
+\paragraph{}{when $p=q=\frac{1}{2}\quad  f(\sigma)$ get the minimum  }
+\paragraph{}{$Min_{f(\sigma)}=1$}
+\paragraph{}{so $f(\sigma)\ge1,\quad for\quad all\quad \sigma \le 0$ }
+\paragraph{ii}{WTS  $\mathbb{E}_{n}S_{n+1}=S_{n}$}
+\begin{displaymath}
+  \mathbb{E}_{n}S_{n+1}=\mathbb{E}_{n}S_{n}e^{\frac{\sigma X_{n+1}}{ f(\sigma)}}=\frac{S_{n}}{pe^{\sigma}+qe^{\sigma}}\mathbb{E}_{n}e^{\sigma X_{n+1}}
+  =\frac{S_{n}}{pe^{\sigma}+qe^{\sigma}}(pe^{\sigma}+qe^{\sigma})=S_{n}
+\end{displaymath}
+\paragraph{}{$\quad\quad\quad\quad\quad\quad\quad\quad\quad$ "take out what is known" $\quad\quad\quad$     "independence"}
+\paragraph{iii}{}
+\paragraph{}{For martingale stopped at a stopping time is still a martingale, and thus has constant expectation. The process
+\begin{displaymath}
+S_{n}=e^{\sigma M_{n}(\frac{1}{f(\sigma)})^{n}}
+\end{displaymath} is a martingale.}
+\paragraph{}{so \begin{displaymath}
+                  \mathbb{E}[S_{0}]=\mathbb{E}[S_{n \land \tau_{1}}]=\mathbb {E}[e^{\sigma M_{n\land \tau_{1}}(\frac{1}{f(\sigma)})^{n\land \tau_{1}}}]=1
+                \end{displaymath}}
+\paragraph{}{as for $e^{\sigma M_{n\land \tau_{1}}}$}
+\begin{displaymath}
+  0\le e^{\sigma M_{n\land \tau_{1}}} \le e^{\sigma m}
+\end{displaymath}
+\paragraph{}{and for $\tau_{m}<\infty$ \begin{displaymath}
+                                         \lim_{n \to \infty }e^{\sigma M_{n\land \tau_{1}}}=e^\sigma
+                                       \end{displaymath} }
+\paragraph{}{as for $(\frac{1}{f(\sigma)})^{n\land \tau_{1}}$ \begin{displaymath}
+                                                                \lim_{n \to \infty}=(\frac{1}{f(\sigma)})^{n}
+\begin{cases}
+(\frac{1}{pe^{\sigma}+qe^{-\sigma}})^{\tau_{1}}, &\tau_{1}< \infty \cr 0, &\tau_{1}= \infty \end{cases}
+                                                              \end{displaymath}}
+\paragraph{}{to sum up\begin{displaymath}
+                        \lim_{n \to \infty}e^{\sigma M_{n\land \tau_{1}}(\frac{1}{f(\sigma)})^{n\land \tau_{1}}}=\mathbb{I}_{\{ \tau_{1}<\infty\}}e^{\sigma}(\frac{1}{pe^{\sigma}+qe^{-\sigma}})^{\tau_{1}}
+                      \end{displaymath}}
+\paragraph{}{take the limit as n $\to \infty $ in $\mathbb {E}[e^{\sigma M_{n\land \tau_{1}}(\frac{1}{f(\sigma)})^{n\land \tau_{1}}}]=1$ and obtain
+\begin{displaymath}
+  \mathbb{E}[\mathbb{I}_{\{ \tau_{1}<\infty\}}e^{\sigma}(\frac{1}{pe^{\sigma}+qe^{-\sigma}})^{\tau_{1}}]=1
+\end{displaymath}}
+\paragraph{}{so \begin{displaymath}
+                  \mathbb{E}[\mathbb{I}_{\{ \tau_{1}<\infty\}}(\frac{1}{pe^{\sigma}+qe^{-\sigma}})^{\tau_{1}}]=e^{-\sigma}
+                \end{displaymath}}
+\paragraph{}{when we computer the limit of both side as $\sigma \to 0$ ,we get $\mathbb{P}{\tau_{m}<\infty}=1$}
+\paragraph{iv}{}
+\paragraph{}{set $\alpha = \frac{1}{pe^{\sigma}+qe^{-\sigma}}$, we have}
+\begin{align*}
+  &\alpha pe^{\sigma}+\alpha q e^{-\sigma}=1\\
+  &\alpha q (e^{-\sigma})^2-e^{-\sigma}+\alpha p=0\\
+  &e^{-\alpha}=\frac{1\pm \sqrt{1-4\alpha^{2}pq}}{2\alpha q}
+\end{align*}
+\paragraph{}{Because $\sigma >0$, we take \begin{displaymath}
+                                            e^{-\alpha}=\frac{1- \sqrt{1-4\alpha^{2}pq}}{2\alpha q}
+                                          \end{displaymath}}
+\paragraph{}{in (iii) we have \begin{displaymath}
+                                \mathbb{E}[e^{\sigma}(\frac{1}{f(\sigma)})^{\tau_{1}}]=1
+                              \end{displaymath}}
+\paragraph{}{so we have \begin{displaymath}
+                          \mathbb{E}[\alpha^{\tau_{1}}]=e^{-\sigma}=\frac{1- \sqrt{1-4\alpha^{2}pq}}{2\alpha q}
+                        \end{displaymath}}
+\paragraph{v}{}
+\begin{displaymath}
+  \mathbb{E}\alpha ^{\tau}=\frac{1-\sqrt{1-4\alpha^2pq}}{2\alpha q}
+\end{displaymath}
+\paragraph{}{Differentiating product with respect to $\alpha$ lead to}
+\begin{align*}
+  \mathbb{E}\tau_{1}\alpha^{\tau_{1}-1} &= \frac{-\frac{1}{2}\sqrt{1-4\alpha^2pq}(-8\alpha qp)(2\alpha q)-2q(1-\sqrt{1-4\alpha^2pq})}{4\alpha^2q^2} \\
+   &= \frac{8\alpha^2pq-(\sqrt{1-4\alpha^2pq}-1+4\alpha^2pq)2q}{4\alpha^2q^2\sqrt{1-4\alpha^2pq}} \\
+   &=\frac{4\alpha^2p-\sqrt{1-4\alpha^2pq}+1-4\alpha^2pq}{2\alpha^2q\sqrt{1-4\alpha^2pq}} \\
+   &= \frac{1-\sqrt{1-4\alpha^2pq}}{2\alpha^2q\sqrt{1-4\alpha^2pq}}
+\end{align*}
+\paragraph{}{letting $\alpha \to 1$, we get \begin{displaymath}
+                                              \mathbb{E}[\tau_1]=\frac{1-\sqrt{1-4pq}}{2q\sqrt{1-4pq}}=\frac{1-\sqrt{(p+q)^2-4pq}}{3q\sqrt{(p+q)^2-4pq}}=\frac{1-(p-q)}{2q(p-q)}=\frac{1}{p-q}
+                                            \end{displaymath}}
+\paragraph{Exercise 3.2}{}
+\paragraph{}{For $0\le s\le t$, WTS $\mathbb{E}[W^{2}(t)-t|\mathbb{F}_{s}]=W^{2}(s)-s$}
+\begin{align*}
+\mathbb{E}[W^{2}(t)-t|\mathbb{F}_{s}]& =\mathbb{E}[(W(t)-W(s))^{2}+2W(t)W(s)-W^{2}(s)-t|\mathbb{F}_{s}]   \end{align*}
+\paragraph{}{Because $ W(s)$ is $\mathbb{F}_{s}$ measurable, using "take our what is known" and "linearity of conditional expectations"}
+   \begin{align*}\mathbb{E}[W^{2}(t)-t|\mathbb{F}_{s}]=\mathbb{E}[(W(t)-W(s))^{2}|\mathbb{F}_{s}]+2W(s)E[W(t)|\mathbb{F}_{s}]-W^{2}(s)-t
+  \end{align*}
+\paragraph{}{Because $W(t)-W(s)$ is independent with W(s), using "independence" to drop off the filtration, and W(t) is a martingale, so $\mathbb{E}[W(t)|\mathbb{F}_{s}]=W(s)$}
+\begin{align*}
+\mathbb{E}[W^{2}(t)-t|\mathbb{F}_{s}]&
+=\mathbb{E}[(W(t)-W(s))^{2}]+2W^{2}(s)-W^{2}(s)-t
+  \end{align*}
+\paragraph{}{because$\mathbb{E}[W(t)-W(s)]=0$ we have}
+\begin{align*}
+ \mathbb{E}[W^{2}(t)-t|\mathbb{F}_{s}]&=\mathbb{E}[(W(t)-W(s))^{2}]-\mathbb{E}^{2}[W(t)-W(s)]+2W^{2}(s)-W^{2}(s)-t\\
+   &=Var[W(t)-W(s)]+W^{2}(s)-t\\
+   &=t-s+W^{2}(s)-t\\
+   &=W^{2}(s)-s
+\end{align*}
+\paragraph{}{so $W^{2}(t)-t$ is a martingale}
+\paragraph{Exercise 3.3}{}
+\begin{align*}
+  \varphi^{(3)}(u)=\mathbb{E}[(X-\mu)^{3}e^{u(X-\mu)}]
+  &
+  =\sigma^{4}ue^{\frac{1}{2}\sigma^{2}u^{2}}
+  +2\sigma^{4}ue^{\frac{1}{2}\sigma^{2}u^{2}}+\sigma^{6}u^{3}e^{\frac{1}{2}\sigma^{2}u^{2}}\\
+   &
+  =(3\sigma^{4}u+\sigma^{6}u^{3})e^{\frac{1}{2}\sigma^{2}u^{2}}
+\end{align*}
+\begin{displaymath}
+   \varphi^{(3)}(0)=\mathbb{E}[(X-\mu)^{3}]=0
+\end{displaymath}
+\begin{align*}
+  \varphi^{(4)}(u)=\mathbb{E}[(X-\mu)^{4}e^{u(X-\mu)}]
+  &
+  =3\sigma^{4}e^{\frac{1}{2}\sigma^{2}u^{2}}
+  +3\sigma^{6}u^{2}e^{\frac{1}{2}\sigma^{2}u^{2}}+3\sigma^{6}u^{2}e^{\frac{1}{2}\sigma^{2}u^{2}}+\sigma^{8}u^{4}e^{\frac{1}{2}\sigma^{2}u^{2}}\\
+   &
+  =(3\sigma^{4}+6\sigma^{6}u^{2}+\sigma^{8}u^{4})e^{\frac{1}{2}\sigma^{2}u^{2}}
+\end{align*}
+\begin{displaymath}
+   \mathbb{E}[(X-\mu)^{4}]=\varphi^{(4)}(0)=3\sigma^{4}
+\end{displaymath}
+\paragraph{Exercise 3.4}{i}
+\paragraph{}{As hint shows \begin{displaymath}
+                             \sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^2 \le \max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}| \sum_{j=0}^{n-1}|W_{(t_{(j+1)})}-W_{t_j}|
+                           \end{displaymath}}
+\begin{displaymath}
+   \sum_{j=0}^{n-1}|W_{(t_{(j+1)})}-W_{t_j}|\ge \frac{ \sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^2}{\max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}|}
+\end{displaymath}
+\paragraph{}{we compute the limit of both sides as $||\pi|| \to 0 $, we get \begin{displaymath}
+                                                                              \lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}|W_{(t_{(j+1)})}-W_{t_j}|\ge
+\frac{\lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^2}{\lim_{||\pi|| \to 0}\max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}|}
+                                                                            \end{displaymath} }
+\paragraph{}{As for numerator \begin{align*}
+                                \lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^2  & =\lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}Var[W_{(t_{j+1})}-W_{(t_j)}]\\
+                                &= \lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}(t_{j+1}-t_{j})\\
+                                & =t_{n}\le \infty
+                              \end{align*}}
+\paragraph{}{As for denominator \begin{displaymath}
+\lim_{||\pi|| \to 0}\max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}|  \doteq \lim_{||\pi|| \to 0} \mathbb{E}[W(t_{j+1})-W(t_j)]=0
+\end{displaymath}}
+\paragraph{}{so \begin{displaymath}
+                    \lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}|W_{(t_{(j+1)})}-W_{t_j}|\ge
+\frac{\lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^2}{\lim_{||\pi|| \to 0}\max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}|}=\infty
+                \end{displaymath}}
+\paragraph{ii}{}
+\paragraph{}{from hint, we get \begin{displaymath}
+                             \sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^3 \le \max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}| \sum_{j=0}^{n-1}(W_{(t_{(j+1)})}-W_{t_j})^2
+                           \end{displaymath}}
+\paragraph{}{as show in (i) \begin{displaymath}
+                              \lim_{||\pi|| \to 0}\max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}|  \doteq \lim_{||\pi|| \to 0} \mathbb{E}[W(t_{j+1})-W(t_j)]=0
+                            \end{displaymath}}
+                            \begin{align*}
+                                \lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^2  & =\lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}Var[W_{(t_{j+1})}-W_{(t_j)}]\\
+                                &= \lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}(t_{j+1}-t_{j})\\
+                                & =t_{n}\le \infty
+                              \end{align*}
+\paragraph{}{so \begin{displaymath}
+                             \sum_{j=0}^{n-1}(W_{(t_{j+1})}-W_{(t_j)})^3 \le \max_{0\le k\le n-1}|W_{(t_{k+1})}-W_{t_{k}}| \sum_{j=0}^{n-1}(W_{(t_{(j+1)})}-W_{t_j})^2=t_{n}*0=0
+                           \end{displaymath}}
+\paragraph{Exercise 3.6}
+\paragraph{i}{Want to show :\begin{displaymath}
+                              \mathbb{E}[f(X(t))|\mathbb{F}(s)]=g(X(s))
+                            \end{displaymath}}
+\begin{displaymath}
+ \mathbb{E}[f(X(t) -X(s)+X(s )|\mathbb{F}(s)]
+\end{displaymath}
+\paragraph{}{Because X(s) is $\mathbb{F}(s)$ measurable, we set X(s) as a dummy variable x}
+\paragraph{}{And set \begin{displaymath}
+                       g(x)=\mathbb{E}[f(X(t) -X(s)+x|\mathbb{F}(s)]
+                     \end{displaymath}}
+\begin{displaymath}
+               X(t)-X(s)=W(t)-W(s)+\mu (t-s)
+             \end{displaymath}\paragraph{}{ is normally distributed with mean $\mathbb{E}=\mu (t-s)$ and variance $t-s$}
+\paragraph{}{So \begin{displaymath}
+                  g(x)= \int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi (t-s)}}e^-\frac{(w-\mu(t-s))^2}{2(t-s)^2}f(w+x)dw
+                \end{displaymath}}
+\paragraph{}{set y=w+x so dy=dw}
+\begin{displaymath}
+  g(x)\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi (t-s)}}e^-\frac{(y-x-\mu(t-s))^2}{2(t-s)^2}f(y)dy
+\end{displaymath}
+\paragraph{}{set \begin{displaymath}
+                   \tau =t-s\quad and \quad \mathbb{P}(\tau, x,y)=\frac{1}{\sqrt{2\pi \tau }}e^{{\frac{(y-x-\mu \tau)^2}{2\tau}}}
+                 \end{displaymath}}
+\paragraph{}{so \begin{displaymath}
+                  g(x)=\int_{-\infty}^{+\infty}f(y)\mathbb{P}(\tau,x,y)dy
+                \end{displaymath}}
+\paragraph{}{that is \begin{displaymath}
+                       \mathbb{E}[f(X(t))|\mathbb{F}(s)]=g(X(s))
+                     \end{displaymath} hence X has the Markov property }
+\paragraph{ii}{}
+\begin{displaymath}
+  \mathbb{E}[f(S(t)*S(s)/S(s))\mathbb{F}(s)]
+\end{displaymath}
+\paragraph{}{S(s) is $\mathbb{F}(s)$ measurable, so set S(s) as a dummy variable x, and set \begin{displaymath}
+                                                                                              g(x)=\mathbb{E}[f(\frac{S(t)}{S(s)}x)]\end{displaymath}}
+\begin{displaymath}
+  \frac{S(t)}{S(s)}=e^{\sigma[W(t)-W(s)]+\nu (t-s)}
+\end{displaymath}
+\paragraph{}{$\sigma[W(t)-W(s)]+\nu (t-s)$ is normally distributed with mean $\nu(t-s)$ and variance $\sigma^2(t-s)$}
+\paragraph{}{So $\frac{S(t)}{S(s)}$ is log-normally distributed}
+\begin{displaymath}
+  g(x)=\int_{0}^{+\infty}\frac{1}{w\sqrt{2\pi\sigma^2(t-s)}}e^{-\frac{(ln(w)-\nu(t-s))^2}{2\sigma^2(t-s)}}f(xw)dw
+\end{displaymath}
+\paragraph{}{set y=xw, so dy=xdw, $\tau =t-s$}
+\begin{displaymath}
+  g(x)=\int_{0}^{+\infty}\frac{1}{w\sqrt{2\pi\sigma^2\tau}}e^{-\frac{(ln(\frac{y}{x})-\nu\tau)^2}{2\sigma^2\tau}}f(y)dy
+\end{displaymath}
+\paragraph{}{set \begin{displaymath}
+                   \mathbb{P}(\tau,x,y)=\frac{1}{\sigma y \sqrt{2\pi \tau}}e^{-\frac{(ln(y/x)-\nu \tau)^2}{2\sigma^2\tau}}
+                 \end{displaymath}}
+\paragraph{}{so \begin{displaymath}
+                  g(x)=\int_{0}^{+\infty}f(y)\mathbb{P}(\tau,x,y)dy
+                \end{displaymath}}
+\paragraph{}{that is \begin{displaymath}
+                       \mathbb{E}[f(S(t))|\mathbb{F}(s)]=g(S(s))
+                     \end{displaymath}hence S has the Markov property}
+\paragraph{Exercise 3.7}{i}
+\begin{displaymath}
+  \mathbb{E}[Z(t)|\mathbb{F}(s)]=\mathbb{E}[Z(s)e^{(\sigma(\mu(t-s)+W(t)-W(s))-(\sigma\mu+\frac{1}{2}\sigma)(t-s)}|\mathbb{F}(s)]
+\end{displaymath}
+\paragraph{}{Z(s) is $\mathbb{F}(s)$ measurable, use "take out what is known"}
+\begin{displaymath}
+  \mathbb{E}[Z(t)|\mathbb{F}(s)]=Z(s)\mathbb{E}[e^{\sigma(W(t)-W(s))-\frac{1}{2}(t-s)}|\mathbb{F}(s)]
+\end{displaymath}
+\paragraph{}{$W(t)-W(s)$ is independent with $W(s)$, use "independence" to drop off $\mathbb{F}(s)$}
+\begin{displaymath}
+  \mathbb{E}[Z(t)|\mathbb{F}(s)]=Z(s)\mathbb{E}[e^{(\sigma(W(t)-W(s))-\frac{1}{2}\sigma^2(t-s))}]
+\end{displaymath}
+\paragraph{}{use "take out what is known" we have \begin{displaymath}
+                                                    \mathbb{E}[Z(t)|\mathbb{f}(s)]=\frac{Z(s)e^{(\sigma(W(t)-W(s)))}}{e^{-\frac{1}{2}\sigma^2(t-s)}}
+                                                  \end{displaymath}}
+\paragraph{}{$W(t)-W(s)$ is normally distributed with mean 0 and variance t-s}
+\paragraph{}{Because $\mathbb{E}[e^{ux}]=e^{\frac{1}{2}u^{2}t}$, x with mean 0 and variance t}
+\paragraph{}{so \begin{displaymath}
+                  \mathbb{E}[e^{\sigma(W(t)-W(s))}]=e^{\frac{1}{2}\sigma^{2}(t-s)}
+                \end{displaymath}}
+\paragraph{}{so \begin{displaymath}
+                  \mathbb{E}[Z(t)|\mathbb{F}(s)]=Z(s)
+                \end{displaymath} is a martingale}
+\paragraph{}{ii}
+\paragraph{}{Z(t) is martingale, $ 0 \le t < \infty $, $\tau_{m}=Min\{t\ge 0; X(t)=m\}$}
+\paragraph{}{for martingale that is stopped at stopping time is still a martingale, thus has constant expectation}
+\begin{displaymath}
+  1=Z(0)=\mathbb{E}[Z(t\land \tau_{m})]=\mathbb{E}[e^{\sigma X (t\land \tau_{m})-(\sigma\mu + \frac{1}{2}\sigma^2)(t\land \tau_{m})}]=1
+\end{displaymath}
+\paragraph{}{iii}
+\paragraph{}{for $m>0$ and $\sigma >0$, Brownian motion is always at or below level m for $t\ge \tau_{m}$}
+\paragraph{}{so $0\le e^{\sigma W(t\land \tau_{m})}\le e^{\sigma m}$}
+\paragraph{}{if $\mathbb{\tau}_{m}<\infty $ and large enough, \begin{displaymath}
+                                                                e^{-(\sigma\mu+\frac{1}{2})(t\land \tau_{m})}=e^{-(\sigma \mu +\frac{1}{2}\sigma^{2})\tau_{m}}
+                                                              \end{displaymath}}
+\paragraph{}{if $\mathbb{\tau}_{m}=\infty $ , \begin{displaymath}
+                                                                e^{-(\sigma\mu+\frac{1}{2})(t\land \tau_{m})}=e^{-(\sigma \mu +\frac{1}{2}\sigma^{2})t}
+                                                              \end{displaymath} as $t \to \infty$, it converges to 0}
+\paragraph{}{so \begin{displaymath}
+                  \lim_{t \to \infty} e^{-(\sigma\mu+\frac{1}{2}\sigma^{2})(t\land \tau_{m})}=\mathbb{I}_{\{\tau_{m}<\infty\}}e^{-(\sigma\mu+ \frac{1}{2}\sigma)\tau_{m}}
+                \end{displaymath} }
+\paragraph{}{when \begin{displaymath}
+                    \tau_{m}<\infty,\quad e^{\sigma W(t\land\tau_{m})}=e^\sigma m
+                  \end{displaymath}}
+\paragraph{}{when \begin{displaymath}
+                    \tau_{m}=\infty,\quad e^{\sigma W(t\land\tau_{m})}\le e^\sigma m <\infty
+                  \end{displaymath} so \begin{displaymath}
+                                         \lim_{t \to \infty} e^{-(\sigma\mu+\frac{1}{2}\sigma^{2})(t\land \tau_{m})}=0
+                                       \end{displaymath}}
+\paragraph{}{so we have \begin{displaymath}
+                          e^{\sigma W(t\land \tau_{m})-(\sigma\mu+\frac{1}{2}\sigma^{2})(t\land \tau_{m})}=\mathbb{I}_{\{\tau_{m}<\infty\}}e^{\sigma m-(\sigma\mu+\frac{1}{2}\sigma^2)\tau_{m}}
+                        \end{displaymath}}
+\paragraph{}{for Z(t) has constant expectation, so}
+\begin{displaymath}
+  1=\mathbb{E}[Z(t\land \tau)]=\mathbb{E}[\mathbb{I}_{\{\tau_{m}<\infty\}}e^{\sigma m-(\sigma\mu+\frac{1}{2}\sigma^2)\tau_{m}}]
+\end{displaymath}
+\begin{displaymath}
+  \mathbb{E}[\mathbb{E}[\mathbb{I}_{\{\tau_{m}<\infty\}}e^{-(\sigma\mu+\frac{1}{2}\sigma^2)\tau_{m}}]]=e^{-\sigma m}
+\end{displaymath}
+\paragraph{}{take limit as both side $\sigma to 0$}
+\begin{displaymath}
+  \mathbb{E}[\mathbb{I}_{\{\tau_{m}< \infty \}}]=1
+\end{displaymath}
+\paragraph{}{so \begin{displaymath}
+                  \mathbb{P}\{\mathbb{I}_{\tau_{m}<\infty}\}=1
+                \end{displaymath}}
+\paragraph{}{set $\alpha= \sigma\mu+\frac{1}{2}\sigma^{2}$}
+\begin{displaymath}
+  \frac{1}{2}\sigma^2+\sigma\mu-\alpha=0\quad\quad \sigma=-\mu \pm \sqrt{\mu^2+2\alpha}
+\end{displaymath}
+\paragraph{}{because $\sigma >0$ so $\sigma = -\mu +\sqrt{\mu^2+2\alpha}$}
+\paragraph{}{so \begin{displaymath}
+                  \mathbb{E}e^{-\alpha \tau_{m}}=e^{m\mu-m\sqrt{2\alpha^2+\mu^2}}
+                \end{displaymath} for all $\sigma>0$}
+\paragraph{iv}{}
+\begin{displaymath}
+  \mathbb{E}e^{-\alpha\tau_{m}}=e^m\mu-m\sqrt{2\alpha +\mu^2}
+\end{displaymath}
+\paragraph{}{Differentiate it with respect to x}
+\begin{displaymath}
+  \mathbb{E}-\tau_{m}e^{-\alpha \tau_{m}}=-\frac{2m}{2\sqrt{2\alpha+\mu^2}}e^{m\mu-m\sqrt{2\alpha+\mu^2}}
+\end{displaymath}
+\begin{displaymath}
+  \mathbb{E}\tau_{m}e^{-\alpha\tau_{m}}=\frac{m}{\sqrt{2\alpha+\mu^2}}e^{m\mu-m\sqrt{2\alpha+\mu^2}}
+\end{displaymath}
+\paragraph{}{take both side as $\alpha \to 0$}
+\begin{displaymath}
+  \mathbb{E}[\tau_{m}]=\frac{m}{\mu}
+\end{displaymath}
+\paragraph{v}{}
+\paragraph{}{for $\sigma>-2\mu$, $\sigma\mu+\frac{1}{2}\sigma^2>\frac{1}{2}\sigma^2-\frac{1}{2}\sigma^2=0$}
+\paragraph{}{so \begin{displaymath}
+  \lim_{t\to \infty}e^{\sigma W(t\land \tau_{m})-(\sigma\mu+\frac{1}{2})(t\land \tau_{m})}=
+  \mathbb{I}_{\{\tau_{m}<\infty\}}e^{\sigma m-(\sigma \mu-\frac{1}{2}\sigma^2)\tau}
+\end{displaymath} is still valid}
+\paragraph{}{so \begin{displaymath}
+                  \mathbb{E}[e^{\sigma m-(\sigma\mu+\frac{1}{2}\sigma^2)\tau}\mathbb{I}_{\{\tau_{m}<\infty\}}]=1
+                \end{displaymath} is still hold}
+\paragraph{}{take the limit for $\sigma \to -2\mu$, we have \begin{displaymath}
+                                                              \mathbb{E}[\mathbb{I}_{\{\tau_{m}<\infty\}}]=e^{-\sigma m}=e^{2\mu m}
+                                                            \end{displaymath}}
+\paragraph{}{for $m>0$, $\mu<0$, so $e^{2\mu m}<1$}
+\paragraph{}{set$\alpha = \sigma\mu+\frac{1}{2}\sigma^2$, so we have $\frac{1}{2}\sigma^2+\mu\sigma-\alpha=0$}
+\begin{displaymath}
+  \sigma=-\mu\pm \sqrt{\mu^2+2\alpha}
+\end{displaymath}
+\paragraph{}{because $\sigma >0$, we choose $\sigma=\-mu+\sqrt{\mu^2+2\alpha}$}
+\begin{displaymath}
+  \mathbb{E}[e^{-\alpha\tau_{m}}\mathbb{I}_{\{\tau_{m}<\infty\}}]=e^{m\mu-m\sqrt{\mu^2+2\alpha}}
+\end{displaymath}
+
+\paragraph{}{when $\tau_{m}=\infty$, $e^{\alpha\tau_{m}}=0$}
+\paragraph{}{so drop the condition and get \begin{displaymath}
+                                             e^{-\alpha \tau_{m}}=e^{m\mu-m\sqrt{\mu^2+2\sigma}}
+                                           \end{displaymath} for all $\alpha$}
+\paragraph{ Extra a}{If W and B are independent Brownian Motions then the average of W and B given by $X_{t}=(\frac{1}{2})(W_{t}+B_{t})$ is again a Brownian Motion}
+\paragraph{False}{WTS:If X is a Brownian Motion, then for all $0=t_{0}<t_{1}<...<t_m$, the increments $X(t_1)=X(t_1)-X(t_0),X(t_2)-X(t_1),...,X(t_m)-X(t_{m-1})$ are independent. And each of these increments is normally distributed with mean 0 and variance $t_{i+1}-t_i$}
+\paragraph{}{set $0< t_i<t_j<t_k$}
+\paragraph{}{because W and B are independent Brownian Motions, so $W(t_j)-W(t_i)$ and $B(t_j)-B(t_i)$ is $\mathbb{F}(t_j)$ measurable, so $X(t_j)-X(t_i)$ is $\mathbb{F}(t_j)$ measurable}
+\paragraph{}{also we have $W(t_k)-W(t_j)$ and $B(t_k)-B(t_j)$ is not $\mathbb{F}(t_j)$ measurable, that is $X(t_k)-X(t_j)$ is not $\mathbb{F}(t_j)$ measurable}
+\paragraph{}{so we have prove the increments of X are independent}
+\begin{displaymath}
+  \mathbb{E}[X(t_k)-X(t_j)]=\mathbb{E}[\frac{1}{2}(W(t_k)-W(t_j)+B(t_k)-B(t_j))]
+\end{displaymath}
+\paragraph{}{because W and X are independent, we have: \begin{displaymath}
+                                                         \mathbb{E}[X(t_k)-X(t_j)]=\frac{1}{2}\mathbb{E}[W(t_k)-W(t_j)+\frac{1}{2}\mathbb{E}[B(t_k)-B(t_j)]=\frac{1}{2}(0+0)=0
+                                                       \end{displaymath}}
+\begin{align*}
+  Var[X(t_k)-X(t_j)] & =\mathbb{E}[(X(t_k)-X(t_j))^2]-(\mathbb{E}[X(t_k)-X(t_j)])^2\\
+   & =\mathbb{E}[(X(t_k)-X(t_j))^2] \\
+   & =\mathbb{E}[(\frac{1}{2}(W(t_k)-W(t_j))-\frac{1}{2}(B(t_k)-B(t_j)))^2] \\
+   & =\frac{1}{4}(\mathbb{E}[(W(t_k)-W(t_j))^2]+\mathbb{E}[(B(t_k)-B(t_j))^2]\\
+   &\quad -2\mathbb{E}[(W(t_k)-W(t_j))]\mathbb{E}[(B(t_k)-B(t_j))])\\
+   & =\frac{1}{4}( Var[W(t_k)-W(t_j)]+Var[B(t_k)-B(t_j)])\\
+   &=\frac{1}{2}(t_{k}-t_{j})\neq t_{k}-t_{j}
+\end{align*}
+\paragraph{}{so X is not a Brownian Motion }
+\paragraph{Extra b}{If X and Y are martingales then the average of X and Y give by $Z_t=\frac{1}{2}(X_{t}+Y_{t})$ is again a martingale}
+\paragraph{True}{set $s<t$, WTS: for $Z_t=\frac{1}{2}(X_{t}+Y_{t})$ $\mathbb{E}[Z_{t}|\mathbb{F}(s)]=Z_{s}$}
+\begin{displaymath}
+  \mathbb{E}[Z_{t}|\mathbb{F}(s)]=\mathbb{E}[\frac{1}{2}(X_{t}+Y_{t})|\mathbb{F}(s)]
+\end{displaymath}
+\paragraph{}{use"Linearity of conditional expectation"
+\begin{displaymath}
+  \mathbb{E}[Z_{t}|\mathbb{F}(s)]=\mathbb{E}[\frac{1}{2}X_{t}|\mathbb{F}(s)]+\mathbb{E}[\frac{1}{2}Y_{t}|\mathbb{F}(s)]
+\end{displaymath}}
+\paragraph{}{Because X and Y are martingales, so we have
+\begin{displaymath}
+   \mathbb{E}[Z_{t}|\mathbb{F}(s)]=\frac{1}{2}X_{s}+\frac{1}{2}Y_{s}=Z_{s}
+\end{displaymath} So, Z is a martingale}
+\paragraph{Extra c}{If X has finite, non-zero quadratic variation:i.e. $0<[X,X]<\infty$ then X has infinite first variation:i.e. $FV(X)=\infty$}
+\paragraph{False}{}
+\begin{displaymath}
+  f(x)=
+\begin{cases}
+1, &,0<x<1\cr 2, &1\le x \end{cases}
+\end{displaymath}
+\paragraph{}{its quadratic variation:}
+\begin{displaymath}
+  [f,f]=\lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}[f(t_{j+1})-f(t_{j})]^{2}
+\end{displaymath}
+\paragraph{when $t_{j+1} \to 1+\epsilon$ and$t_{j} \to 1-\epsilon$, $\epsilon \to 0$, we have $[f,f]=1<\infty$   }
+\paragraph{}{also we can have its first variation $FV(f)=\lim_{||\pi|| \to 0}\sum_{j=0}^{n-1}[f(t_{j+1})-f(t_{j})]=1<\infty$}
+\end{document}  

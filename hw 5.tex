@@ -1,0 +1,386 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\begin{document}
+
+
+\title {Homework 5}
+\date {December 5, 2015}
+\author{Kejia Huang}
+\maketitle
+\paragraph{Exercise 5.1}
+\paragraph{(i)}
+\paragraph{}{Let $f(t,x)=S(0)e^x$, we have:}
+\begin{align*}
+\frac{\partial f}{\partial t}=0 \quad \frac{\partial f}{\partial x}=f(t,x)\quad \frac{\partial^2 f}{\partial x^2}=f(t,x)
+\end{align*}
+\begin{align*}
+ & X(t)=\int_{0}^{t}\sigma(s)dW(s)+\int_{0}^{t}(\alpha(s)-R(s)-\frac{1}{2}\sigma^2(s))ds\\
+ & dX(t)=(\alpha(t)-R(t)-\frac{1}{2}\sigma^2(t))dt+\sigma(t)dW(t)\\
+ & (dX(t))^2=\sigma^2(t)dt
+\end{align*}
+\paragraph{}{Use Ito formula}
+\begin{align*}
+  d(D(t)S(t)) &= d(f(t,X(t)))\\
+  &=\frac{\partial f}{\partial t}dt+\frac{\partial f}{\partial x}dx+\frac{1}{2}\frac{\partial^2 f}{\partial x^2}(dx)^2\\
+  &=D(t)S(t)dX(t)+\frac{1}{2}D(t)S(t)(dX(t))^2\\
+  &=D(t)S(t)(\alpha(t)-R(t)-\frac{1}{2}\sigma^2(t))dt+\sigma(t)dW(t))+\frac{1}{2}D(t)S(t)\sigma^2(t)dt\\
+  &=(\alpha(t)-R(t))D(t)S(t)dt+\sigma(t)D(t)S(t)dW(t)
+\end{align*}
+\paragraph{(ii)}
+\paragraph{}{We have:}
+\begin{align*}
+ & dS(t)=\alpha(t)S(t)dt+\sigma(t)S(t)dW(t) \\
+ & dD(t)=-R(t)D(t)dt\\
+ & dS(t)dD(t)=0
+\end{align*}
+\paragraph{}{Use Ito product rule}
+\begin{align*}
+  d(D(t)S(t)) =&S(t)dD(t)+D(t)dS(t)+dD(t)dS(t)  \\
+   & =S(t)(-R(t)D(t)dt)+D(t)(\alpha(t)S(t)dt+\sigma(t)S(t)dW(t))\\
+   &=(\alpha(t)-R(t))D(t)S(t)dt+\sigma(t)D(t)S(t)dW(t)
+\end{align*}
+\paragraph{Exercise 5.2}
+\paragraph{}{For Lemma 5.2.2 and 5.2.30 we have}
+\begin{align*}
+  &\tilde{\mathbb{E}[Y|\mathbb{F}(s)]=\frac{1}{Z(s)}\mathbb{E}[YZ(t)|\mathbb{F}(s)]}
+   \\
+  &D(t)V(t)=\tilde{\mathbb{E}}[D(T)V(T)|\mathbb{F}(t)]
+\end{align*}
+\paragraph{}{So}
+\begin{align*}
+  &D(t)V(t)=\tilde{\mathbb{E}}[D(T)V(T)|\mathbb{F}(t)]\\
+  &=\frac{1}{Z(t)}\mathbb{E}[D(T)Z(T)V(T)|\mathbb{F}(t)]\\
+   &D(t)Z(t)V(t)=\mathbb{E}[D(T)Z(T)V(T)|\mathbb{F}(t)]
+\end{align*}
+\paragraph{Exercise 5.3}
+\paragraph{(i)}
+\begin{align*}
+  c(0,x)=\mathbb{E}[e^{-rT}(x exp\{\sigma\tilde{W}(T)+(r-\frac{1}{2})T\}-K)^{+} ]
+\end{align*}
+\paragraph{}{By differentiate inside the expected value, we have}
+\begin{align*}
+  c_{x}(0,x) &= \mathbb{E}[e^{-rT}(\mathbb{I}_{\{x exp\{\sigma\tilde{W}(T)+(r-\frac{1}{2}\sigma^2)T>K\}} exp\{\sigma\tilde{W}(T)+(r-\frac{1}{2}\sigma^2)T\} ]\\
+  &=e^{-\frac{1}{2}\sigma^{2}T}\tilde{\mathbb{E}}[e^{\sigma\sqrt{T}\frac{\tilde{W}(T)}{\sqrt{T}}}
+  \mathbb{I}_{\{\frac{\sigma\tilde{W}(T)}{\sqrt{T}}-\sigma\sqrt{T}>
+  \frac{1}{\sigma\sqrt{T}}(ln\frac{K}{x}-(r-\frac{1}{2}\sigma^2)T)-\sigma\sqrt{T}\}} ]\\
+  &=e^{-\frac{1}{2}\sigma^{2}T}\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{(z-\sigma\sqrt{T})^2}{2}}
+  \mathbb{I}_{\{z-\sigma\sqrt{T}>-d_{+(T,x)}\}}dz\\
+&=\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{(z-\sigma\sqrt{T})^2}{2}}
+  \mathbb{I}_{\{z-\sigma\sqrt{T}>-d_+(T,x)\}}dz\\
+  &=N(d_+(T,x))
+\end{align*}
+\clearpage
+\paragraph{(ii)}{}
+\paragraph{}{Set $S(t)=xexp\{\sigma\tilde{W}(t)+(r-\frac{1}{2}\sigma^2)t\}$}
+\paragraph{}{Let $\hat{\mathbb{P}}$ be a probability measure equivalent to $\tilde{\mathbb{P}}$ and let Z(t) be a Radon-Nikodym. }
+\paragraph{}{$\mathbb{I}_{S(T)>K}$ is $\mathbb{F}(T)$-measurable and we have}
+\begin{align*}
+  \hat{\mathbb{P}}(S(T)>K) & =\hat{\mathbb{E}}[\mathbb{I}_{\{S(T)>K\}}] \\
+   & =\tilde{\mathbb{E}}[Z(T)\mathbb{I}_{\{S(T)>K\}}] \\
+   &  =\tilde{\mathbb{E}}[exp^{\{\sigma\tilde{W}(T)-\frac{1}{2}\sigma^{2}T\}}\mathbb{I}_{\{S(T)>K\}}] \\
+   & =c_{x}(0,x)\quad we\quad define \quad Z(t)=exp^{\{\sigma\tilde{W}(t)-\frac{1}{2}\sigma^{2}t\}}
+\end{align*}
+\paragraph{}{Use Girsanov, one dimension, set $\theta = -\sigma$ we have}
+\begin{align*}
+   \hat{W}(t)=\tilde{W}(t)+\int_{0}^{t}(-\sigma)du=\tilde{W}(t)-\sigma t
+\end{align*}
+\paragraph{}{It is a Brownian motion under $\hat{\mathbb{P}}$}
+\paragraph{iii}
+\begin{align*}
+  &S(t)=xexp\{\sigma\tilde{W}(t)+(r-\frac{1}{2}\sigma^2)t\}  \\
+   & \hat{W}(t)=\tilde{W}(t)-\sigma t
+\end{align*}
+\paragraph{}{So we have \begin{align*}
+                          \hat{P}(S(T)>K & =\hat{P}(xe^{\sigma\hat{W}(T)+(r+\frac{1}{2}\sigma^2)T}>K) \\
+                           & =\hat{P}(\frac{\hat{W}(T)}{\sqrt{T}}>-d_{+}(T,x))\\
+                           &=N(d_{+}(T,x))
+                        \end{align*}}
+\paragraph{Exercise 5.6}
+\paragraph{}{For Theorem 5.4.1, we have}
+\begin{align*}
+  &\theta(t)=(\theta_1(t),\theta_2(t))\quad is \quad 2-dimensional \quad adapted \quad process  \\
+   & Z(t)=exp^{\{-\int_{0}^{t}\theta(u)dW(u)-\frac{1}{2}\int_{0}^{t}||\theta(u)||^2du\}}\\
+   &\tilde{W}(t)=W(t)+\int_{0}^{t}\theta(u)du
+\end{align*}
+\paragraph{}{Use "Levy, two dimensions", WTS that $\tilde{W}(t)$ is a 2-dimensional Brownian motion}
+\subparagraph{i Continuity}
+\paragraph{}{$\tilde{W}(t)=W(t)+\int_{0}^{t}\theta(u)du$, because Brownian motion W(t) has continuous sample paths and integral is continuous too, so $\tilde{W}(t)$ is continuous.}
+\subparagraph{ii Starting at zero}
+\begin{align*}
+  \tilde{W}(0)=W(0)+\int_{0}^{0}\theta(u)du=W(0)=0
+\end{align*}
+\subparagraph{iii Unit quadratic and zero cross variation}
+\paragraph{}{For i, j =1,2, $j\neq i$}
+\begin{align*}
+  d\tilde{W}_{i} d\tilde{W}_{i}& = (dW_i(t)+\theta_i(t))(dW_i(t)+\theta_i(t))\\
+   & =dt
+\end{align*}
+\begin{align*}
+  d\tilde{W}_{i} d\tilde{W}_{j}& = (dW_i(t)+\theta_i(t))(dW_j(t)+\theta_j(t))\\
+   & =dW_i(t)dW_j(t)\\&=0
+\end{align*}
+\subparagraph{iv Martingale property}
+\paragraph{}{We define $X(t)=-\int_{0}^{t}\theta(u)dW(u)-\frac{1}{2}\int_{0}^{t}||\theta(u)||^2du$}
+\begin{align*}
+  dX(t) &= -\theta(t)dW(t)-\frac{1}{2}||\theta(t)||^2dt \\
+  dX(t)dX(t) & = (-\theta(t)dW(t)-\frac{1}{2}||\theta(t)||^2dt)^2\\
+  &=\sum_{j=1}^{d}\sum_{k=1}^{d}\theta_j(t)\theta_k(t)dW_j(t)dW_k(t)\\
+  &=\sum_{j=1}^{d}\theta^2_j(t)dt\\
+  &=||\theta(t)||^2dt
+\end{align*}
+\paragraph{}{We define $f(t,x)=e^x$}
+\begin{align*}
+  f_t=0, f_x=e^x, f_{xx}=e^x
+\end{align*}
+\begin{align*}
+  dZ(t) & =df(X(t)) \\
+   & =Z(t)dX(t)+\frac{1}{2}Z(t)dX(t)dX(t) \\
+   & =-Z(t)\theta(t)dW(t)-\frac{1}{2}Z(t)||\theta(t)||^2dt+\frac{1}{2}Z(t)||\theta(t)||^2dt\\
+   =-Z(t)\theta(t)dW(t)
+\end{align*}
+\paragraph{}{There is no dt term in dZ(t), so it is a martingale under $\mathbb{P}$. $\mathbb{E}[Z(T)]=Z(0)=1$, thus it qualifies as a Radon-Nikoym derivative process.}
+\paragraph{}{Use Ito product rule}
+\begin{align*}
+  d(\tilde{W}(t)Z(t)) & =\tilde{W}dZ(t)+Z(t)d\tilde{W}(t)+d\tilde{W}(t)dZ(t) \\
+   & =-\tilde{W}(t)Z(t)\theta(t)dW(t)+Z(t)(dW(t)+\theta(t)dt)+(dW(t)+\theta(t)dt)(-Z(t)\theta(t)dW(t)) \\
+  &=-\tilde{W}(t)Z(t)\theta(t)dW(t)+Z(t)dW(t)+Z(t)\theta(t)dt-Z(t)\theta(t)dt\\
+  &=-\tilde{W}(t)Z(t)\theta(t)dW(t)+Z(t)dW(t)\\
+  &=Z(t)(-\tilde{W}(t)\theta(t)+1)dW(t)
+\end{align*}
+\paragraph{}{There is no dt term in $ d(\tilde{W}(t)Z(t))$, so it is a martingale under $\mathbb{P}$}
+\paragraph{}{Using Lemma 5.2.2}
+\begin{align*}
+  \tilde{E}[\tilde{W}(t)|\mathbb{F}(s)] & =\frac{1}{Z(s)}\mathbb{E}[\tilde{W}(t)Z(t)|\mathbb{F}(s)] \\
+  &=\frac{1}{Z(s)}\tilde{W}(s)Z(s)\\
+  &=\tilde{W}(s)
+\end{align*}
+\paragraph{}{So $\tilde{W}(t)$ is a 2-dimensional martingale under $\mathbb{P}$}
+\paragraph{}{To sum up, $\tilde{W}(t)$ satisfies all the condition of the Levy two dimension, we conclude that $\tilde{W}(t)$ is a 2-dimensional Brownian motion under $\tilde{\mathbb{P}}$}
+\paragraph{Exercise 6.1}
+\paragraph{i}
+\begin{align*}
+&Z(t)=exp\{\int_{t}^{t}\sigma(v)dW(v)+\int_{t}^{t}(b(v)-\frac{1}{2}\sigma^2(v))dv\}=1 \end{align*}
+\paragraph{}{Let }
+\begin{align*}
+ &A(u)=\int_{t}^{u}\sigma(v)dW(v)+\int_{t}^{u}(b(v)-\frac{1}{2}\sigma^2(v))dv\\
+  &dA(u)=\sigma(u)dW(u)+(b(u)-\frac{1}{2}\sigma^2(u))du
+\end{align*}
+\paragraph{}{Let $f(u,x)=e^x$}
+\begin{align*}
+  \frac{\partial f}{\partial u}=0, \frac{\partial f}{\partial x}=f, \frac{\partial^2 f}{\partial x^2}=f
+\end{align*}
+\paragraph{}{Use Ito Lemma, we have}
+\begin{align*}
+  dZ(u) &= df(u,A(u)) \\
+  & =Z(u)dA(u)+\frac{1}{2}Z(u)dA(u)dA(u)\\
+   & =(b(u)-\frac{1}{2}\sigma^2(u))Z(u)du+\sigma(u)Z(u)dW(u)+\frac{1}{2}\sigma^2(u)Z(u)du\\
+    \\
+   & =b(u)Z(u)du+\sigma(u)Z(u)dW(u)
+\end{align*}
+\paragraph{ii}{}
+\paragraph{}{Using Ito product rule}
+\begin{align*}
+  dX(u) &= d(Y(u)Z(u)) \\
+   &=Y(u)dZ(u)+Z(u)dY(u)+dY(u)dZ(u)  \\
+   &=b(u)X(u)du+\sigma(u)X(u)dW(u)+(a(u)-\sigma(u)\gamma(u))du+r(u)dW(u)+\sigma(u)r(u)du\\
+   & =(a(u)+b(u)X(u))du+(r(u)+\sigma(u)X(u))dW(u)
+\end{align*}
+\paragraph{}{For Z(t)=1, Y(t)=x, and X(u)=Y(u)Z(u),so X(t)=x}
+\paragraph{Exercise 6.2}{}
+\paragraph{i}
+\paragraph{}{The self-financing portfolio process X(t) is given by}
+\begin{align*}
+  dX(t) & =\Delta_1(t)df(t,R(t),T_1)+\Delta_2(t)df(t,R(t),T_2)+R(t)(X(t)\\
+  &\quad -\Delta_1(t)f(t,R(t),T_1)-\Delta_2(t)f(t,R(t).T_2))dt
+\end{align*}
+\paragraph{}{Using Ito Lemma}
+\begin{align*}
+  df(t,R(t),T) & =f_t(t,R(t),T)dt+f_r(r,R(t),T)dR(t)+\frac{1}{2}f_{rr}(t,R(t),T)dR(t)dR(t)\\ \\
+   &=f_t(t,R(t),T)dt+\alpha(t,R(t))f_r(t,R(t),T)dt\\
+   &\quad +\gamma(t,R(t))f_r(t,R(t),T)dW(t)+\frac{1}{2}\gamma^2(t,R(t))f_{rr}(t,R(t),T)dt
+\end{align*}
+\paragraph{}{For $dD(t)=-R(t)D(t)dt$}
+\paragraph{}{Using Ito product rule}
+\begin{align*}
+  d(D(t)X(t)) & =D(t)dX(t)+X(t)dD(t)+dD(t)dX(t) \\
+   & = \Delta_1(t)D(t)df(t,R(t),T_1)+\Delta_2(t)D(t)df(t,R(t),T_2)\\
+  &\quad +R(t)D(t)(X(t)-\Delta_1{t}f(t,R(t),T_1)-\Delta_2(t)f(t,R(t),T_2))dt-
+  R(t)D(t)X(t)dt\\
+  & =\Delta_1(t)D(t)[-R(t)f(t,R(t),T_1)dt+df(t,R(t),T1)]\\
+  &\quad +\Delta_2(t)D(t)[-R(t)f(t,R(t),T_2)dt+df(t,R(t),T_2)]\\
+  &=\Delta_1(t)D(t)[-R(t)f(t,R(t),T_1)+f_t(t,R(t),T_1)\\
+  &\quad +\alpha(t,R(t))f_r(t,R(t),T_1)+\frac{1}{2}\gamma^2(t,R(t))f_{rr}(t,R(t),T_1)]dt\\
+  &\quad +\Delta_2(t)D(t)[-R(t)f(t,R(t),T_2)+f_t(t,R(t),T_2)\\
+  &\quad +\alpha(t,R(t))f_r(t,R(t),T_2)+\frac{1}{2}\gamma^2(t,R(t))f_rr(t,R(t),T_2)dt\\
+  &\quad +D(t)\gamma(t,R(t))[\Delta_1(t)f_r{t,R(t),T_1}+\Delta_2(t)f_r(t,R(t),T_2)]dW(t)\\
+  &=\Delta_1(t)D(t)[\alpha(t,R(t))-\beta(t,R(t),T_1)]f_r(t,R(t),T_1)dt\\
+  &\quad +\Delta_2(t)D(t)[\alpha(t,R(t))-\beta(t,R(t),T_2)]f_r(t,R(t),T_2)dt\\
+  &\quad +D(t)\gamma(t,R(t))[\Delta_1(t)f_r(t,R(t),T_1)+\Delta_2(t)f_r{t,R(t),T_2}]dW(t)
+\end{align*}
+\paragraph{ii}
+\begin{align*}
+   &  \Delta_1(t)f_r(t,R(t),T_1)+\Delta_2(t)f_2(t,R(t),T_2) \\
+   & =S(t)f_r(t,R(t),T_1)f_r(r,R(t),T_2)-S(t)f_r(t,R(t),T_1)f_r(r,R(t),T_2)\\
+   &=0
+\end{align*}
+\paragraph{}{So the diffusion term in $d(D(t)X(t))$ vanishes}
+\begin{align*}
+  d(D(t)X(t)) &=\Delta_1(t)D(t)[\alpha(t,R(t))-\beta(t,R(t),T_1)]f_r(t,R(t),T_1)dt\\
+  &\quad +\Delta_2(t)D(t)[\alpha(t,R(t))-\beta(t,R(t),T_2)]f_r(t,R(t),T_2)dt\\
+&=S(t)D(t)[\beta(t,R(t),T_2)-\beta(t,R(t),T_1)]f_r(t,R(t),T_1)f_r(t,R(t),T_2)dt
+\end{align*}
+\paragraph{}{For no-arbitrage to exist, the discounted wealth process of a risk-free portfolio has to be a martingale. So there is no dt term in d(D(t)X(t)), so $\beta(t,R(t),T_2)=\beta(t,R(t),T_1)$, because $T_1,T_2 $ can be any maturities, we conclude that $\beta(t,R(t),T)$ has to be independent of T}
+\paragraph{iii}
+\paragraph{}{We set $T_1=T, \Delta_1(t)=\Delta(t),\Delta_2(t)=0$, and $f_r(t,r,T)=0$, then we have:}
+\begin{align*}
+  d(D(t)X(t)) & = \Delta(t)D(t)[-R(t)f(t,R(t),T)+f_t(t,R(t),T)+\alpha(t,R(t))f_r(t,R(t),T)\\
+  &\quad \frac{1}{2}\gamma^2(t,R(t))f_{rr}(t,R(t),T)]dt
+\end{align*}
+\paragraph{}{For no-arbitrage to exist, the change in the discounted portfolio value must be zero. So:}
+\begin{align*}
+  -R(t)f(t,R(t),T)+f_t(t，R(t),T)+\frac{1}{2}\gamma^2(t,R(t))f_{rr}(t,R(t),T)=0
+\end{align*}
+\paragraph{Exercise 6.3}
+\paragraph{i}
+\begin{align*}
+  \frac{d}{ds}[e^{-\int_{0}^{s}b(v)dv}C(s,T)] & =  C(s,T)\frac{d}{ds}[e^{-\int_{0}^{s}b(v)dv}+e^{-\int_{0}^{s}b(v)dv }\frac{d}{ds}(C(s,T))\\
+  & = e^{-\int_{0}^{s}b(v)dv}[-b(s)C(s,T)+C'(s,T)]\\
+  & = e^{-\int_{0}^{s}b(v)dv}[-b(s)C(s,T)+b(s)C(s,T)-1]\\
+  & =-e^{-\int_{0}^{s}b(v)dv}
+\end{align*}
+\paragraph{ii}
+\begin{align*}
+  \int_{t}^{T}\frac{d}{ds}[e^{-\int_{0}^{s}b(v)dv}C(s,T)] &=
+  e^{-\int_{0}^{T}b(v)dv}C(T,T)-e^{-\int_{0}^{t}b(v)dv}C(t,T)\\
+  -e^{-\int_{0}^{t}b(v)dv}C(t,T) &=-\int_{t}^{T}
+  e^{-\int_{0}^{s}b(v)dv} \\
+  C(t,T) & =\int_{t}^{T}
+  e^{-\int_{0}^{s}b(v)dv}e^{\int_{0}^{t}b(v)dv}=\int_{t}^{T}e^{\int_{s}^{t}b(v)dv}ds
+\end{align*}
+\paragraph{iii}
+\begin{align*}
+  &A'(s,T)  =-a(s)C(s,t)+\frac{1}{2}\sigma^2(s)C^2(s,T) \\
+  &A(T,T)-A(t,T)  =-\int_{t}^{T}a(s)C(s,T)ds+\frac{1}{2}\int_{t}^{T}\sigma^2(s)C^2(s,T)ds\\
+  &A(t,T)=\int_{t}^{T}(a(s)C(s,T)-\frac{1}{2}\sigma^2(s)C^2(s,T))ds
+\end{align*}
+\paragraph{Exercise 11.1}
+\paragraph{i}
+\begin{align*}
+  \mathbb{E}[M^2(t)|\mathbb{F}_s] &=\mathbb{E}[M^2(t)-M^2(s)+M^2(s)|\mathbb{F}_s]  \\
+   & =\mathbb{E}[M^2(t)-M^2(s)|\mathbb{F}_s]+M^2(s) \\
+   &"Linearity" \quad "Taking \quad out\quad  what\quad  is\quad  know"\\
+ & =\mathbb{E}[M^2(t)+M^2(s)-2M(s)M(t)+2M^2(s)-2M(s)M(t)|\mathbb{F}_s]+M^2(s)\\
+ &=\mathbb{E}[(M(t)-M(s))^2+2M(s)(M(s)-M(t))|\mathbb{F}_s]+M^2(s)\\
+ &=\mathbb{E}[(M(t)-M(s))^2]+\mathbb{E}[2M(s)(M(s)-M(t))|\mathbb{F}_s]+M^2(s)\\
+ &"Linearity" \quad "Independence"\\
+ &\mathbb{E}[(M(t)-M(s))^2]-2M(s)\mathbb{E}[(M(t)-M(s))]+M^2(s)\\
+ &"Taking \quad out\quad  what\quad  is\quad  know"\quad "Independence"\\
+ &=\lambda(t-s)+M^2(s)\\
+ &\ge M^2(s)
+\end{align*}
+\paragraph{}{So $M^2(t)$ is a submartingale}
+\paragraph{ii}
+\begin{align*}
+  \mathbb{E}[M^2(t)-\lambda t|\mathbb{F}_s] &=\mathbb{E}[M^2(t)-M^2(s)+M^2(s)-\lambda t|\mathbb{F}_s]  \\
+   & =\mathbb{E}[M^2(t)-M^2(s)|\mathbb{F}_s]+M^2(s)-\lambda t \\
+   &"Linearity" \quad "Taking \quad out\quad  what\quad  is\quad  know"\\
+ & =\mathbb{E}[M^2(t)+M^2(s)-2M(s)M(t)+2M^2(s)-2M(s)M(t)|\mathbb{F}_s]+M^2(s)-\lambda t\\
+ &=\mathbb{E}[(M(t)-M(s))^2+2M(s)(M(s)-M(t))|\mathbb{F}_s]+M^2(s)-\lambda t\\
+ &=\mathbb{E}[(M(t)-M(s))^2]+\mathbb{E}[2M(s)(M(s)-M(t))|\mathbb{F}_s]+M^2(s)-\lambda t\\
+ &"Linearity" \quad "Independence"\\
+ &\mathbb{E}[(M(t)-M(s))^2]-2M(s)\mathbb{E}[(M(t)-M(s))]+M^2(s)-\lambda t\\
+ &"Taking \quad out\quad  what\quad  is\quad  know"\quad "Independence"\\
+ &=-\lambda(s)+M^2(s)\\
+\end{align*}
+\paragraph{}{So $M^2(t)-\lambda(t)$ is a martingale}
+\clearpage
+\paragraph{Exercise 11.2}
+\paragraph{}{For the increment of Poisson process has stationary property}
+\paragraph{}{And for Lemma 11.2.2, we have}
+\begin{align*}
+  \mathbb{P}\{N(t)=k\}=\frac{(\lambda t)^k}{k!}e^{-\lambda t}
+\end{align*}
+\paragraph{i}
+\begin{align*}
+  \mathbb{P}\{N(s+t)=k|N(s)=k\} & =\mathbb{P}\{N(s+t)-N(s)=0|N(s)=k\} \\
+   & =\mathbb{P}\{N(t)=0\}\\
+   &=e^{-\lambda t}\\
+   &=1-\lambda t+ O(t^2)
+\end{align*}
+\paragraph{ii}
+\begin{align*}
+    \mathbb{P}\{N(s+t)=k+1|N(s)=k\} & =\mathbb{P}\{N(s+t)-N(s)=1|N(s)=k\} \\
+     & =\mathbb{P}\{N(t)=1\}\\
+     &=\frac{(\lambda t)^1}{1!}e^{-\lambda t}\\
+     &=\lambda t(1-\lambda t+ O(t^2))\\
+     &=\lambda t+O(t^2)
+\end{align*}
+\paragraph{iii}
+\begin{align*}
+   \mathbb{P}\{N(s+t)\ge k+2|N(s)=k\} & =\mathbb{P}\{N(s+t)-N(s)\ge 2|N(s)=k\} \\
+     & =\mathbb{P}\{N(t)\ge2\}\\
+     &\sum_{k=2}^{\infty}\frac{(\lambda t)^k}{k!}e^{-\lambda t}\\
+     &= O(t^2)
+\end{align*}
+\clearpage
+\paragraph{Additional Problem}
+\paragraph{}{The self-financing portfolio process X(t) is given by}
+\begin{align*}
+  dX(t) &=\Delta(t)dS(t)+r(X(t)-\Delta(t)S(t))dt \\
+\end{align*}
+\begin{align*}
+ dX(t) &=\Delta(t)dS(t)+r(X(t)-\Delta(t)S(t))dt \\
+  &  =\Delta(t)(rS(t)dt+\sigma S(t)d\tilde{W}(t))+r(X(t)-\Delta(t)S(t))dt  \\
+  &=\Delta(t)\sigma S(t)d\tilde{W}(t)+rX(t)dt
+\end{align*}
+\paragraph{}{We define discount process $D(t)=e^{-tr}$}
+\paragraph{}{Because of    $dS(t)=rS(t)dt+\sigma S(t)d\tilde{W}(t)$}
+\paragraph{}{We use Ito product rule }
+\begin{align*}
+  d(X(t)D(t)) &= X(t)dD(t)+D(t)dX(t)+dX(t)dD(t) \\
+  &=\Delta (t)\sigma D(t)S(t)d\tilde{W}(t)
+\end{align*}
+\paragraph{}{Because there is no dt term in dS(t)D(t), so X(t)D(t) is a martingale. So it has constant expectation}
+\begin{align*}
+  &D(0)X(0)  =\mathbb{E}[D(T)X(T)] \\
+  &X(0)=\mathbb{E}[e^{-rT}S^2(T)]
+\end{align*}
+\paragraph{}{Because $dS(t)=rS(t)dt+\sigma S(t)d\tilde{W}(t)$, so S(t) is a generalized geometric Brownian motion. So $S(t)=S(0)exp\{\int_{0}^{t}\sigma d\tilde{W}(t)+\int_{0}^{t}(r-\frac{1}{2}\sigma^2)dt\}$}
+\begin{align*}
+  X(0) &=\mathbb{E}[e^{-rT}S^2(T)] \\
+  & =\mathbb{E}[e^{-rT}S^2(0)e^{2\int_{0}^{T}(r-\frac{1}{2}\sigma^2)dt+2\int_{0}^{T}\sigma(s)d\tilde{W}(t)}] \\
+ & =e^{-rT}S^2(0)e^{2T(r-\frac{1}{2}\sigma^2}\mathbb{E}[e^{2\int_{0}^{T}\sigma(s)d\tilde{W}(t)}]\\
+&= e^{-rT}S^2(0)e^{2T(r-\frac{1}{2}\sigma^2}\mathbb{E}[e^{2\int_{0}^{T}\sigma^2(s)d\tilde{W}(t)}]\\
+ &"Use\quad moment\quad generating\quad function\quad"\\
+ &=S^2(0)e^{rT+\sigma^2T}
+\end{align*}
+\paragraph{}{Let V(T) be an $\mathbb{F}(t)$ measurable random variable, represents the pay off at time T of a derivative security.That is \\}
+\begin{align*}
+  X(T)=V(T)\quad almost \quad surely
+\end{align*}
+\paragraph{}{According to 5.2.30, $D(t)V(t)=\mathbb{E}[D(T)V(T)|\mathbb{F}(t)]$, so it is a martingale}
+\begin{align*}
+  D(t)V(t) & =\mathbb{E}[D(T)V(T)|\mathbb{F}(t)] \\
+  & =\mathbb{E}[D(T)S^2(T)|\mathbb{F}(t)]\\
+  & =S^2(0)e^{(r+\sigma^2)T}\mathbb{E}[e^{-2\sigma^2T+2\sigma \tilde{W}(T)}|\mathbb{F}(t)]\\
+\end{align*}
+\paragraph{}{Set $f(t,x)=e^{-2\sigma ^2t+2\sigma x}$}
+\paragraph{}{Using Ito Lemma}
+\begin{align*}
+  &f_t=-2\sigma^2 f \quad f_x=2\sigma f  \quad f_{xx}=4\sigma^2 f\\
+  df=& -2\sigma^2 fdt+2\sigma fd\tilde{W}(t)+\frac{1}{2}4\sigma^2 fdt \\
+   & =2\sigma fd\tilde{W}(t)
+\end{align*}
+\paragraph{}{So there is no dt term in df, so f(t,x) is a martingale}
+\begin{align*}
+   D(t)V(t)  &  =S^2(0)e^{(r+\sigma^2)T}\mathbb{E}[e^{-2\sigma^2T+2\sigma \tilde{W}(T)}|\mathbb{F}(t)]\\ 
+   & =S^2(0)e^{(r+\sigma^2)T}e^{-2\sigma^2t+2\sigma \tilde{W}(t)}\\
+   &=S^2(0)e^{(r+\sigma^2)T}f(t,\tilde{W}(t))
+\end{align*}
+\paragraph{}{Because d(D(t)V(t))=d(D(t)X(t)), we have}
+\begin{align*}
+  &S^2(0)e^{(r+\sigma^2)T}2\sigma f(t,\tilde{W}(t))d\tilde{W}(t)=e^{-rt}\sigma \Delta(t)S(t)d\tilde{W}(t) \\
+ & \Delta(t)=2S(0)e^{(r+\sigma^2)T-\frac{3}{2}\sigma^2 t+\sigma\tilde{W}(t)}\\
+\end{align*}
+\end{document} 

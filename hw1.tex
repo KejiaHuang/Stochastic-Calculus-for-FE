@@ -1,0 +1,240 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsfonts}
+\begin{document}
+
+
+\title {Homework 1}
+\date {September 14, 2015}
+\author{Kejia Huang}
+\maketitle
+
+
+\paragraph{Exercise 1.5}
+\paragraph{}{The function $\mathbb{I}_{[0,X(\omega)}(x)$ is a indicator function, so $\mathbb{I}_{[0,X(\omega)}(x)$ = 1 when $x\in [0,X(\omega))$ }
+\begin{displaymath}
+\int_{\Omega}^{}\int_{0}^{\infty}\mathbb{I}_{[0,X(\omega)}(x)dxd\mathbb{P}(w)=\int_{\Omega}^{}\int_{0}^{X(\omega)}1dxd\mathbb{P}(w)=\int_{\Omega}^{}X(\omega)d\mathbb{P}(w)=\mathbb{E}X
+\end{displaymath}
+\paragraph{}{The function $\mathbb{I}_{[0,X(\omega)}(x)=1$, so it is integrable, so the order of the integration can be reversed}
+\begin{displaymath}
+\int_{\Omega}^{}\int_{0}^{\infty}\mathbb{I}_{[0,X(\omega)}(x)dxd\mathbb{P}(w)=\int_{0}^{\infty}\int_{\Omega}^{}\mathbb{I}_{[0,X(\omega)}(x)dxd\mathbb{P}(w)=\int_{0}^{\infty}\int_{\Omega}^{}1_{(x<X(\omega))}d\mathbb{P}(w)dx
+\end{displaymath}
+\begin{displaymath}
+=\int_{0}^{\infty}P(x<X)dx=\int_{0}^{\infty}1-P(X\leq x)dx=\int_{0}^{\infty}1-F(x)dx
+\end{displaymath}
+\paragraph{}{so\begin{displaymath}
+ \mathbb{E}(X)=\int_{0}^{\infty}1-F(x)dx
+ \end{displaymath}}
+
+
+ \paragraph{Exercise 1.6 }
+\paragraph{i}
+ \begin{displaymath}
+ f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
+\end{displaymath}
+\paragraph{}{Verify that
+\begin{displaymath}
+\mathbb{E}(e^{uX})=e^{u\mu+\frac{1}{2}u^{2}\mu^{2}}
+\end{displaymath}}
+\begin{displaymath}
+\mathbb{E}(e^{uX})=\int_{-\infty}^{\infty}e^{ux}f(x)dx=\int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{2\sigma^{2}ux-(x^{2}+\mu^{2}-2\mu x)}{2\sigma ^ {2}}}dx
+\end{displaymath}
+\begin{displaymath}
+=\int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{[x-(u\sigma^{2}+\mu)]^{2}-u^{2}\sigma^4-2u\mu\sigma^{2}}{2\sigma ^2}}dx
+\end{displaymath}
+\begin{displaymath}
+=e^{\frac{u^{2}\sigma^{2}+2u\mu}{2}}\int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{[x-(u\sigma^{2}+\mu)^{2}]^{2}}{2\sigma^{2}}}dx
+\end{displaymath}
+\paragraph{}{because \begin{displaymath}
+                      \int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{[x-(u\sigma^{2}+\mu)^{2}]^{2}}{2\sigma^{2}}}dx
+                    \end{displaymath} is cdf of random variable with expectation $u\sigma^{2}+\mu$ and deviation $\sigma^{2}$}
+\paragraph{}{so \begin{displaymath}
+                \int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{[x-(u\sigma^{2}+\mu)^{2}]^{2}}{2\sigma^{2}}}dx=F(\infty)-F(-\infty)=1
+              \end{displaymath}}
+\paragraph{}{So \begin{displaymath}
+                \mathbb{E}(e^{uX})=e^{\frac{u^{2}\sigma^{2}+2u\mu}{2}}
+              \end{displaymath}}
+
+\paragraph{Exercise 1.7 }
+\paragraph{i}
+\begin{displaymath}
+  f(x)=\lim_{n \to +\infty}f_{n}(x)=\lim_{n \to +\infty}\frac{1}{\sqrt{2n\pi}}e^{-\frac{x^{2}}{2n}}
+\end{displaymath}
+\begin{displaymath}
+  \lim_{n \to +\infty}f_{n}(x)=\lim_{n \to +\infty}\frac{1}{\sqrt{2n\pi}}=0\quad and \quad\lim_{n \to +\infty}f_{n}(x)=\lim_{n \to +\infty}e^{-\frac{x^{2}}{2n}}=1
+\end{displaymath}
+\paragraph{}{so \begin{displaymath}
+                  f(x)=\lim_{n \to +\infty}f_{n}(x)=\lim_{n \to +\infty}\frac{1}{\sqrt{2n\pi}}e^{-\frac{x^{2}}{2n}}=0
+                \end{displaymath}}
+\paragraph{ii}
+\begin{displaymath}
+  \int_{\infty}^{-\infty}\frac{1}{\sqrt{2nx}}e-\frac{x^{2}}{2n}dx
+\end{displaymath}
+\paragraph{}{it is the cfd of the normal random variable with expection 0 and deviation n}
+\paragraph{}{so it is equal to $F(\infty)-F(-\infty)=1$
+\paragraph{}{so \begin{displaymath}
+                  \lim_{n\to \infty} \int_{\infty}^{-\infty}\frac{1}{\sqrt{2nx}}e-\frac{x^{2}}{2n}dx=\lim_{n\to \infty}1=1
+                \end{displaymath}}
+\paragraph{}{ }
+\paragraph{}{ }
+\paragraph{iii}
+\paragraph{}{the condition of the Monetone Convergence Theorem is $0\le f_{1}\le f_{2}\le f_{3}\le...$ almost everywhere to a function f}
+\paragraph{}{set $t=\frac{1}{\sqrt{2n}}$ and n$ \in R$}
+\begin{displaymath}
+  \frac{df_{n}(x)}{dn}=\frac{df_{n}(x)}{dt}\frac{dt}{dn}=e^{-x^{2}t^{2}}(1-2t^{2})(-\frac{1}{2\sqrt{2}}n^{-\frac{3}{2}})
+\end{displaymath}
+\begin{displaymath}
+  =e^{-x^{2}t^{2}}(1-\frac{1}{n})(-\frac{1}{2\sqrt{2}}n^{-\frac{3}{2}})<0
+\end{displaymath}
+\paragraph{}{so f(n)$\ge f(n+1)\quad (n\in {1,2,3,...})$}
+\paragraph{}{so $f_{n}(x)$ is not in accordance with the condition of the Monetone Convergence Theorem}
+\paragraph{}{so this does not violate the Monetone Convergence Theorem}
+
+\paragraph{Exercise 1.10 }
+\paragraph{i}
+\paragraph{}{$\mathbb{B}[0,1]$ is Borel $\sigma-algebra$ and A$\in\mathbb{B}[0,1]$ }
+\paragraph{}{$P(\Omega)=1\quad and \quad A$ satisfied with countable additivity }
+\paragraph{}{so $S_{0}(\Omega,\mathbb{A},\mathbb{P})$ is a probability space}
+\paragraph{}{because Z is a nonnegative random variable and $\mathbb{E}(Z)=1$}
+\paragraph{}{defined $\tilde{\mathbb{P}}(A)=\int_{}^{A}Z(\omega)d\mathbb{P}(w)$}
+\paragraph{}{so $\tilde{\mathbb{P}}$ is a probability measure}
+\paragraph{ii}{}
+\paragraph{}{if $\tilde{\mathbb{P}}(A)=0$ then A$\notin \mathbb{B}[0,1]$}
+\begin{displaymath}
+  \tilde{\mathbb{P}}(A)=\int_{A\cup[0,\frac{1}{2})}^{}0d\mathbb{P}(\omega)+\int_{A\cup[\frac{1}{2},1]}^{}2d\mathbb{P}(\omega)
+  =2P(A\cup[\frac{1}{2},1])+0P(A\cup[0,\frac{1}{2}))=0
+\end{displaymath}
+\paragraph{iii}{}
+\begin{displaymath}
+   \tilde{\mathbb{P}}(A)=2P(A\cup[\frac{1}{2},1])+0P(A\cup[0,\frac{1}{2}))
+\end{displaymath}
+\paragraph{}{$ \tilde{\mathbb{P}}(A)=0,P(A)>0$ so A is the subset of $[0,\frac{1}{2})$}
+
+\paragraph{Exercise 1.13}
+\paragraph{i}
+\begin{displaymath}
+  \frac{1}{\epsilon}\mathbb{P}\{X\in B(x,\epsilon)\}=\frac{1}{\epsilon}\int_{x+\frac{\epsilon }{2}}^{x-\frac{\epsilon}{2}}\frac{1}{\sqrt{2\pi}}e^{-\frac{u^{2}}{2}}du
+\end{displaymath}
+\paragraph{}{according to the Mean Value Theorem}
+\begin{displaymath}
+  \frac{\int_{x+\frac{\epsilon}{2}}^{x-\frac{\epsilon }{2}}\frac{1}{\sqrt{2\pi}}e^{-\frac{u^{2}}{2}}du}{(x+\frac{\epsilon }{2})-(x-\frac{\epsilon }{2})}
+  =\frac{1}{\sqrt{2\pi}}e^{-\frac{\xi^{2}}{2}}\quad\quad\quad \xi \in [x-\frac{\epsilon }{2},x+\frac{\epsilon }{2}]
+\end{displaymath}
+\paragraph{}{because x$\in [x-\frac{\epsilon}{2},x+\frac{\epsilon}{2}]$ \quad\quad\quad so}
+
+\begin{displaymath}
+   \frac{\int_{x+\frac{\epsilon}{2}}^{x-\frac{\epsilon}{2}}\frac{1}{\sqrt{2\pi}}e^{-\frac{u^{2}}{2}}du}{(x+\frac{\epsilon}{2})-(x-\frac{\epsilon }{2})}=
+   \frac{\int_{x+\frac{1}{\epsilon}}^{x-\frac{1}{\epsilon}}\frac{1}{\sqrt{2\pi}}e^{-\frac{u^{2}}{2}}du}{\epsilon}
+   =\frac{1}{\epsilon}\int_{x+\frac{1}{\epsilon}}^{x-\frac{1}{\epsilon}}\frac{1}{\sqrt{2\pi}}e^{-\frac{u^{2}}{2}}du\doteq\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}
+\end{displaymath}
+\paragraph{ii}
+\paragraph{}{just use the Mean Value Theorem too}
+\begin{displaymath}
+  \frac{1}{\epsilon}\tilde{\mathbb{P}}\{Y\in B(y,\epsilon)\}=\frac{1}{\epsilon}\int_{y+\frac{\epsilon }{2}}^{y-\frac{\epsilon}{2}}\frac{1}{\sqrt{2\pi}}e^{-\frac{u^{2}}{2}}du\doteq\frac{1}{\sqrt{2\pi}}e^{-\frac{y^{2}}{2}}
+\end{displaymath}
+\paragraph{iii}
+\paragraph{}{$\{X\in B(x,\epsilon)\}\rightarrow\{Y-\theta\in B(x,\epsilon)\}\rightarrow\{Y\in B(x+\theta,\epsilon)\}\rightarrow\{Y\in B(y,\epsilon)\}$}
+\paragraph{iv}
+\begin{displaymath}
+\frac{\tilde{\mathbb{P}}(A)}{\mathbb{P}(A)}\doteq exp{\frac{X^{2}(\overline{\omega})-Y^{2}(\overline{\omega})}{2}}=
+exp\frac{X^{2}(\overline{\omega})-(X(\overline{\omega})+\theta)^{2}}{2}
+=
+ exp\{\frac{-\theta^{2}-2\theta X(\overline{\omega})}{2}\}
+\end{displaymath}
+\paragraph{}{ }
+
+\paragraph{}{ }
+\paragraph{}{ }
+\paragraph{Exercise 2.2}{}
+\paragraph{i}{}
+\begin{displaymath}
+\sigma(X)=\{\emptyset,\Omega,X=1,X=0\}=\{\emptyset,\Omega,\{HT,TH\},\{HH,TT\}\}
+\end{displaymath}
+\paragraph{ii}
+\begin{displaymath}
+\sigma(S_{1})=\{\emptyset,\Omega,S_{1}=8,S_{1}=2\}=\{\emptyset,\Omega,\{HH,HT\},\{TH,TT\}\}
+\end{displaymath}
+
+\paragraph{iii}{the condition for A and B is independent under probability measure$\tilde{\mathbb{P}}$ is}
+\begin{displaymath}
+  \tilde{\mathbb{P}}(A\cap B)=\tilde{\mathbb{P}}(A)*\tilde{\mathbb{P}}(B)
+\end{displaymath}
+\begin{displaymath}
+  \tilde{\mathbb{P}}(\{HT,TH\}\cap\{HH,HT\})=\tilde{\mathbb{P}}(\{HT\})=\frac{1}{4},\quad\tilde{\mathbb{P}}(\{HT,TH\})=\frac{1}{2},\quad\tilde{\mathbb{P}}(\{HH,HT\})=\frac{1}{2}
+\end{displaymath}
+\paragraph{}{so\begin{displaymath}
+                 \tilde{\mathbb{P}}(\{HT,TH\}\cap\{HH,HT\}=\tilde{\mathbb{P}}(\{HT,TH\})*\tilde{\mathbb{P}}(\{HH,HT\})
+               \end{displaymath}}
+\paragraph{}{in this way, we can get $\tilde{\mathbb{P}}(A\cap B)=\tilde{\mathbb{P}}(A)*\tilde{\mathbb{P}}(B)$ for $A\in\sigma(X)\quad B\in\sigma(S_{1})$}
+\paragraph{}{so $\sigma(X)\quad and\quad \sigma(S_{1})$ are independent under measure $\tilde{\mathbb{P}}$ }
+
+\paragraph{iv}{use the same method as in \textbf{iii}}
+\begin{displaymath}
+  \tilde{\mathbb{P}}(\{HT,TH\}\cap\{HH,HT\})=\tilde{\mathbb{P}}(\{HT\})=\frac{2}{9},\quad\tilde{\mathbb{P}}(\{HT,TH\})=\frac{4}{9},\quad\tilde{\mathbb{P}}(\{HH,HT\})=\frac{2}{3}
+\end{displaymath}
+\paragraph{}{so\begin{displaymath}
+                 \tilde{\mathbb{P}}(\{HT,TH\}\cap\{HH,HT\}\neq\tilde{\mathbb{P}}(\{HT,TH\})*\tilde{\mathbb{P}}(\{HH,HT\})
+               \end{displaymath}}
+\paragraph{}{so $\sigma(X)\quad and\quad \sigma(S_{1})$ are not independent under measure $\mathbb{P}$ }
+
+\paragraph{v}{because $\sigma(X)\quad and\quad \sigma(S_{1})$ are not independent under measure $\mathbb{P}$, under the condition of X=1, the distribution of $S_{1}$ can be changed  }
+\paragraph{Exercise 2.6}
+\paragraph{i}{$\sigma(X)=\{\emptyset,\Omega,X=1,X=2\}=\{\emptyset,\Omega,\{a,b\},\{c,d\}\}$}
+\paragraph{ii}{}
+\begin{displaymath}
+  \mathbb{E}[Y|X](a)=\mathbb{E}[Y|X](b)=\frac{Y(a)\mathbb{P}(a)+Y(b)\mathbb{P}(b)}{\mathbb{P}(a)+\mathbb{P}(b)}=\frac{1}{3}-\frac{2}{3}=-\frac{1}{3}
+\end{displaymath}
+\begin{displaymath}
+  \mathbb{E}[Y|X](c)=\mathbb{E}[Y|X](d)=\frac{Y(c)\mathbb{P}(c)+Y(d)\mathbb{P}(d)}{\mathbb{P}(c)+\mathbb{P}(d)}=0
+\end{displaymath}
+\begin{displaymath}
+\int_{\Omega}^{}\mathbb{E}[Y|X](\omega)d\mathbb{P}(\omega)=-\frac{1}{3}*(\frac{1}{6}+\frac{1}{3})=-\frac{1}{6}
+\end{displaymath}
+\begin{displaymath}
+  \int_{\Omega}^{}X(\omega)d\mathbb{P}(\omega)=\frac{1}{6}-\frac{1}{3}+\frac{1}{4}-\frac{1}{4}=-\frac{1}{6}=\int_{\Omega}^{}\mathbb{E}[Y|X](\omega)d\mathbb{P}(\omega)
+\end{displaymath}
+\paragraph{}{so the partial-averaging property is satisfied}
+\paragraph{iii}
+\begin{displaymath}
+\int_{\Omega}^{}\mathbb{E}[Z|X](\omega)d\mathbb{P}(\omega)=\mathbb{E}[Z|X]=\mathbb{E}[X+Y|X]=X+\mathbb{E}[Y|X]=X_{(-1,1)}-\frac{1}{6}=-\frac{1}{6}
+\end{displaymath}
+\begin{displaymath}
+\int_{\Omega}^{}Z(\omega)d\mathbb{P}(\omega)=\mathbb{E}[Z]=\frac{1}{3}*(-2*\frac{1}{4})=-\frac{1}{6}
+\end{displaymath}
+\paragraph{}{so the partial-averaging property is satisfied}
+\paragraph{iv}
+\begin{displaymath}
+  \mathbb{E}[Z|X]-\mathbb{E}[Y|X]=-\frac{1}{6}+X-(-\frac{1}{6})=X
+\end{displaymath}
+\paragraph{}{according to Taking out what is known in Theorem 2.3.2}
+
+\paragraph{Exercise 2.8}
+\paragraph{}{set $\alpha$ is one of the $\sigma(X)$ measurable r.v.}
+\begin{displaymath}
+  \mathbb{E}[Y_{2}|\alpha]=\mathbb{E}[Y-\mathbb{E}[Y|X]|\alpha]=\mathbb{E}[Y|\alpha]-\mathbb{E}[\mathbb{E}[Y|X]|\alpha]
+\end{displaymath}
+\paragraph{}{because $\alpha$ is $\sigma(X)$ measurable}
+\paragraph{}{so \begin{displaymath}
+                   \mathbb{E}[Y_{2}|\alpha]=\mathbb{E}[Y|\alpha]-\mathbb{E}[Y|\alpha]=0
+                 \end{displaymath}}
+\paragraph{}{according to Iterated conditioning}
+\paragraph{}{so $Y_{2}$ and X are uncorrelated}
+
+\paragraph{Exercise 2.10}{}
+\begin{displaymath}
+  \int_{A}^{}g(X)d\mathbb{P}=\int_{-\infty}^{\infty}g(x)f_{X}(x)dx=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\frac{yf_{x,y}(x,y)}{f_{X}(x)}f_{X}(x)dydx \end{displaymath}
+\begin{displaymath}
+   =\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}yf_{x,y}(x,y)dydx=\mathbb{E}[Y]=\int_{A}^{}Yd\mathbb{P}
+\end{displaymath}
+
+\paragraph{extra problem}
+
+\paragraph{A}\begin{displaymath}
+  E[M_{1}]=p-q=M_{0}=0\quad\quad p+q=1
+\end{displaymath}
+\paragraph{}{so $q=p=0.5$}
+\paragraph{B}
+\begin{displaymath}
+  E[M_{302}|M_{300}=60]=E[M_{300}]+E[M_{2}]=60+2*\frac{1}{4}+0*\frac{1}{2}-2*\frac{1}{4}=60
+\end{displaymath}
+\end{document}
+
